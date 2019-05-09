@@ -1,18 +1,7 @@
 from django.shortcuts import render
-
-properties = [
-    {
-        'streetname': 'Karsnesbraut',
-        'price': 28.5
-    },
-    {
-        'streetname': 'Asendi',
-        'price': 40
-    }
-]
+from property.models import Property
 
 
-# Create your views here.
 def index(request):
-    context = {'properties': properties}
-    return render(request, 'Property/index.html', context)
+    context = {'properties': Property.objects.all().order_by('streetname')}
+    return render(request, 'property/index.html', context)

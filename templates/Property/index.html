@@ -5,13 +5,7 @@
     <h3>Properties</h3>
 
     {% for property in properties %}
-        {% if property.price > 39 %}
-            <p>Expensive!</p>
-        {% else %}
-            <p>Not so expensive</p>
-        {% endif %}
-        <h4>{{ property.streetname }}</h4>
-        <p>{{ property.price }}kr.</p>
+        {% include 'property/single_property.html' with property=property %}
     {% endfor %}
 
 {% endblock %}

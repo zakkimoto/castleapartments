@@ -4,6 +4,8 @@ from seller.models import Seller
 
 class PropertyType(models.Model):
     name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
 
 class Property(models.Model):
     streetname = models.CharField(max_length=225)
@@ -19,7 +21,11 @@ class Property(models.Model):
     price = models.FloatField()
     on_sale = models.BooleanField()
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.streetname
 
 class PropertyImage(models.Model):
     image = models.CharField(max_length=999)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.image
