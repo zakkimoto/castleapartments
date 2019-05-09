@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Property.apps.PropertyConfig',
-    'Seller.apps.SellerConfig'
+    'Seller.apps.SellerConfig',
+    'Buyer.apps.BuyerConfig'
 
 ]
 
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'castleapartments.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vlyuwczk',
-        'USER': 'vlyuwczk',
-        'PASSWORD': 'cSncqHO6k0uwn56hjdYoZXG_1DGJQi97',
+        'NAME': 'enfjhfyo',
+        'USER': 'enfjhfyo',
+        'PASSWORD': '8lgOcbAjMEZ78AwWSvTvHOd1HZrv2CQr',
         'HOST': 'balarama.db.elephantsql.com',
         'PORT': '5432'
     }

@@ -1,5 +1,5 @@
 from django.db import models
-
+from Seller.models import Seller
 # Create your models here.
 
 class PropertyType(models.Model):
@@ -10,14 +10,15 @@ class Property(models.Model):
     description = models.CharField(max_length=999, blank=True)
     type = models.ForeignKey(PropertyType, on_delete=models.CASCADE)
     address = models.CharField(max_length=225)
-    postal_code = models.IntegerField()
+    postal_code = models.CharField(max_length=200)
+    city = models.CharField(max_length=225)
     country = models.CharField(max_length=200)
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
     size = models.FloatField()
     price = models.FloatField()
     on_sale = models.BooleanField()
-    seller = models.ForeignKey() # TODO: Map to seller
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
 class PropertyImage(models.Model):
     image = models.CharField(max_length=999)
