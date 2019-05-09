@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="property-index"),
+    path('<int:id>', views.get_property_by_id, name="property_details"),
 ]
