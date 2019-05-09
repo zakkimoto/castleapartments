@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('Seller', '0001_initial'),
+        ('seller', '0001_initial'),
     ]
 
     operations = [
@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('size', models.FloatField()),
                 ('price', models.FloatField()),
                 ('on_sale', models.BooleanField()),
-                ('seller', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Seller.Seller')),
+                ('seller', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='seller.Seller')),
             ],
         ),
         migrations.CreateModel(
@@ -43,12 +43,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.CharField(max_length=999)),
-                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Property.Property')),
+                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='property.property')),
             ],
         ),
         migrations.AddField(
-            model_name='property',
+            model_name='Property',
             name='type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Property.PropertyType'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='property.propertytype'),
         ),
     ]

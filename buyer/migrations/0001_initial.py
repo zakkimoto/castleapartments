@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('Property', '0001_initial'),
+        ('property', '0001_initial'),
     ]
 
     operations = [
@@ -23,10 +23,10 @@ class Migration(migrations.Migration):
                 ('city', models.CharField(max_length=200)),
                 ('country', models.CharField(max_length=200)),
                 ('postal_code', models.CharField(max_length=200)),
-                ('SSC', models.CharField(max_length=10)),
+                ('ssc', models.CharField(max_length=10)),
                 ('credit_card', models.CharField(max_length=16)),
                 ('email', models.CharField(max_length=200)),
-                ('new_property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Property.Property')),
+                ('new_property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='property.property')),
             ],
         ),
     ]

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Property.apps.PropertyConfig',
-    'Seller.apps.SellerConfig',
-    'Buyer.apps.BuyerConfig'
+    'property.apps.PropertyConfig',
+    'seller.apps.SellerConfig',
+    'buyer.apps.BuyerConfig'
 
 ]
 

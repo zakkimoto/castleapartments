@@ -1,5 +1,5 @@
 from django.db import models
-from Seller.models import Seller
+from seller.models import Seller
 # Create your models here.
 
 class PropertyType(models.Model):
