@@ -8,5 +8,6 @@ class Seller(models.Model):
     email = models.CharField(max_length=200)
     agent = models.BooleanField()
     def __str__(self):
-        return self.first_name, self.last_name
+        template = '{0.first_name} {0.last_name}'
+        return template.format(self)
 
