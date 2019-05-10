@@ -10,7 +10,7 @@ $(document).ready(function(){
                     return `<div class="well property">
                                 <a href="/properties/${d.id}">
                                     <img class="property-img" src="${d.firstImage}"/>
-                                    <h4>${d.name}</h4>
+                                    <h4>${d.streetname}</h4>
                                     <p>${d.description}</p>
                                 </a>
                             </div>`
@@ -22,6 +22,6 @@ $(document).ready(function(){
                 // TODO: Show toastr
                 console.error(error)
             }
-        });
+        })
     });
 });
