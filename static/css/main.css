@@ -38,3 +38,20 @@
 p {
     font-size: 78%;
 }
+
+
+.create_propery{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+@keyframes line-under {
+    0% {
+        background-size: 0px 3px;
+    }
+    100% {
+        background-size: 100% 3px;
+    }
+}
