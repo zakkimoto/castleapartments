@@ -15,7 +15,8 @@
     <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
     {% for property_image in property.propertyimage_set.all %}
         <img src="{{ property_image.image }}" class="property-img"/>
-
     {% endfor %}
+
+    <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary">Delete property</a>
 
 {% endblock %}
