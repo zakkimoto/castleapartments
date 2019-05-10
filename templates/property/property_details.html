@@ -1,21 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-
     <h1>{{ property.streetname }}</h1>
-    <p>{{ property.description }}</p>
     <p>{{ property.address }}</p>
     <p>{{ property.postal_code }}</p>
-    <p>{{ property.city }}</p>
-    <p>{{ property.country }}</p>
-    <p>{{ property.bedrooms }}</p>
-    <p>{{ property.bathrooms }}</p>
-    <p>{{ property.size }}</p>
-    <p>{{ property.price }}kr.</p>
-    <p>Type of property: {{ property.propertytype.name }}</p>
-    <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
-    {% for property_image in property.propertyimage_set.all %}
-        <img src="{{ property_image.image }}" class="property-img"/>
-    {% endfor %}
+    <div class="description-container">
+        <p>{{ property.city }}</p>
+        <p>{{ property.country }}</p>
+        <p>{{ property.bedrooms }}</p>
+        <p>{{ property.bathrooms }}</p>
+        <p>{{ property.size }}</p>
+        <p>{{ property.price }}kr.</p>
+        <p>Type of property: {{ property.propertytype.name }}</p>
+        <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
+    </div>
+    <div class="property-imgs">
+        {% for property_image in property.propertyimage_set.all %}
+            <img src="{{ property_image.image }}" class="property-img"/>
+        {% endfor %}
+    </div>
+    <p>{{ property.description }}</p>
 
     <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary">Delete property</a>
 
