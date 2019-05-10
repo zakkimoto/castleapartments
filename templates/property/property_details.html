@@ -18,5 +18,6 @@
     {% endfor %}
 
     <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary">Delete property</a>
+    <a href="{% url 'update_property' property.id %}" class="block btn btn-primary">Update property</a>
 
 {% endblock %}
