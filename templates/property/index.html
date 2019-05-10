@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <h3>Properties</h3>
-
-    {% for property in properties %}
+    <div class="properties">
+        {% for property in properties %}
         {% include 'property/single_property.html' with property=property %}
     {% endfor %}
+    </div>
+
 
 {% endblock %}
