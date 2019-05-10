@@ -11,6 +11,10 @@
     background-size: cover;
 }
 
+.property-img {
+    opacity: 1;
+}
+
 .well{
     height: 300px;
     weight: 300px;
@@ -28,10 +32,11 @@
 ;
 }
 
-.sellers{
+.sellers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
+
 
 }
 
@@ -47,11 +52,16 @@ p {
     font-weight: bold;
 }
 
-@keyframes line-under {
-    0% {
-        background-size: 0px 3px;
-    }
-    100% {
-        background-size: 100% 3px;
-    }
+
+.property-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    height: 600px;
 }
+
+.description-container{
+    float: right
+}
+
+
