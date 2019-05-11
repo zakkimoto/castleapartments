@@ -21,14 +21,14 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">Castle Apartments</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'property-index' %}">Property <span
-                        class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'seller-index' %}">Sellers </a>
-            </li>
-
+            <li class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+            {% endif %}
         </ul>
 
     </div>
@@ -39,7 +39,12 @@
 {% endblock %}
 </div>
 
+<<<<<<< HEAD
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="{% static 'js/properties.js' %}"></script>
+>>>>>>> 63c7e50c42f99f66c7348d9882ec4148461ae5f6
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

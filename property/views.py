@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm
@@ -12,16 +13,22 @@ def index(request):
             'streetname': x.streetname,
             'description': x.description,
             'firstImage': x.propertyimage_set.first().image
+<<<<<<< HEAD
         } for x in Property.objects.filter(streetname__icontains=search_filter)]
+=======
+        } for x in Property.objects.filter(streetname__icontains=search_filter) ]
+>>>>>>> 63c7e50c42f99f66c7348d9882ec4148461ae5f6
         return JsonResponse({ 'data': properties })
     context = {'properties': Property.objects.all().order_by('streetname')}
     return render(request, 'property/index.html', context)
 
+#@login_required
 def get_property_by_id(request, id):
     return render(request, 'property/property_details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
 
+#@login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
@@ -38,11 +45,13 @@ def create_property(request):
         'form': form
     })
 
+#@login_required
 def delete_property(request, id):
     property = get_object_or_404(Property, pk=id)
     property.delete()
     return redirect('property-index')
 
+#@login_required
 def update_property(request, id):
     instance = get_object_or_404(Property, pk=id)
     if request.method == "POST":

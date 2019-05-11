@@ -44,6 +44,15 @@ p {
     font-size: 78%;
 }
 
+
+.create_propery{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+
 .property-imgs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -54,4 +63,5 @@ p {
 .description-container{
     float: right
 }
+
 
