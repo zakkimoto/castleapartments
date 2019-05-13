@@ -1,6 +1,6 @@
 """castleapartments URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The urlpatterns list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
 Function views
@@ -21,4 +21,6 @@ urlpatterns = [
     path('properties/', include('property.urls')),
     path('sellers/', include('seller.urls')),
     path('admin/', admin.site.urls),
+    path('user/', include('user.urls')),
+    path('home/', include('home.urls'))
 ]
