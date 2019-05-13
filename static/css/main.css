@@ -15,10 +15,6 @@
     opacity: 1;
 }
 
-.single-prop{
-    background: aquamarine;
-}
-
 .properties {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -63,10 +59,14 @@ p {
     float: right
 }
 
+footer{
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+}
 
-
-
-.search-box {
+.search-container {
  position: absolute;
  top: 50%;
  left: 50%;
@@ -77,12 +77,12 @@ p {
  padding: 10px;
 }
 
-.search-box:hover > .search-txt {
+.search-container:hover > .search-box {
  width: 240px;
  padding: 0 6px;
 }
 
-.search-box:hover > .search-btn {
+.search-container:hover > .search-btn {
  background: white;
  color: black;
 }
@@ -106,7 +106,7 @@ p {
  font-size: 15px;
 }
 
-.search-txt {
+.search-box {
  border: none;
  background: none;
  outline: none;
@@ -120,23 +120,24 @@ p {
  font-weight: bold;
 }﻿
 
-.search-box {
+
+.search-container {
  position: absolute;
  top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);
  background: #2f3640;
- height: 40px;
+ height: 30px;
  border-radius: 40px;
  padding: 10px;
 }
 
-.search-box:hover > .search-txt {
+.search-container:hover > .search-box {
  width: 240px;
  padding: 0 6px;
 }
 
-.search-box:hover > .search-btn {
+.search-container:hover > .search-btn {
  background: white;
  color: black;
 }
@@ -160,17 +161,39 @@ p {
  font-size: 15px;
 }
 
-.search-txt {
+.search-box {
  border: none;
  background: none;
  outline: none;
  float: left;
  padding: 0;
- color: white;
+ color: lightslategray;
  font-size: 16px;
  transition: 0.4s;
  line-height: 40px;
  width: 0px;
  font-weight: bold;
 }
+
+.homepage-container{
+    align-content: center;
+    text-align: center;
+    height: 500px
+}
+
+.search-container{
+    background-color: white;
+}
+
+#home-title{
+    margin: auto;
+    margin-top: 200px;
+    color: white;
+    font-size: 62px;
+}
+
+#home-body{
+    background-image: url("https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
+}
+
 

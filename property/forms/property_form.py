@@ -25,7 +25,9 @@ class PropertyUpdateForm(ModelForm):
 
 class PropertyCreateForm(ModelForm):
     image = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
-    image2 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    image2 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
+    image3 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
+    image4 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
 
     class Meta:
         model = Property
