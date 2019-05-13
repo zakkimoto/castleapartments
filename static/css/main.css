@@ -1,3 +1,5 @@
+
+
 * {
     box-sizing: border-box;
     font-family: 'Helvetica';
@@ -36,13 +38,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
 
-
 }
 
 p {
     font-size: 78%;
 }
-
 
 .create_propery{
     margin-left: 5%;
@@ -61,15 +61,6 @@ p {
 
 .description-container{
     float: right
-}
-
-<<<<<<< HEAD
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 65px;
-    width: 100%;
 }
 
 
@@ -126,7 +117,6 @@ footer{
  width: 0px;
  font-weight: bold;
 }﻿
-=======
 
 
 .search-box {
@@ -144,7 +134,6 @@ footer{
  width: 240px;
  padding: 0 6px;
 }
->>>>>>> f744fd66a38fcf9c0ea19719fd4e00001fd3df2f
 
 .search-box:hover > .search-btn {
  background: white;
@@ -184,3 +173,15 @@ footer{
  font-weight: bold;
 }
 
+
+#deleting {
+    display: none;
+}
+
+#updating {
+    display: none;
+}
+
+.logged-in #deleting {
+    display: inline;
+}
