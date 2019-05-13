@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'property.apps.PropertyConfig',
     'seller.apps.SellerConfig',
     'buyer.apps.BuyerConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+    'home.apps.HomeConfig'
 
 ]
 
