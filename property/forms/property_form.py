@@ -1,7 +1,32 @@
 from django.forms import ModelForm, widgets
 from django import forms
+
+from buyer.models import Buyer
 from property.models import Property
 
+class PropertyPaymentForm():
+    class Meta:
+        widgets = {
+            'name': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Name of cardholder.'}),
+            'credit_card': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Credit Card Number.'}),
+            'exp_date': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Expiration date.'}),
+            'csv': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'3 digit number on back of card.'}),
+        }
+
+class PropertyBuyForm(ModelForm):
+    class Meta:
+        model = Buyer
+        exclude = ['credit_card']
+        widgets = {
+            'buyer_name': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your full name.'}),
+            'address': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current streetname.'}),
+            'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current city.'}),
+            'country': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current country of living.'}),
+            'postal_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current postal code.'}),
+            'ssc': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your social security number.'}),
+            'email': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your email.'}),
+            'new_property': widgets.Select(attrs={'class': 'form-control'})
+        }
 
 class PropertyUpdateForm(ModelForm):
     class Meta:

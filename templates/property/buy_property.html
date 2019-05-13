@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <form class="form form-horizontal" action="{% url 'buy_property' id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0" onClick="javascript:history.go(-1)"/>
+        <input type="submit" value="Next" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
+    </form>
+{% endblock %}

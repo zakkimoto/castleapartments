@@ -15,10 +15,6 @@
     opacity: 1;
 }
 
-.single-prop{
-    background: aquamarine;
-}
-
 .properties {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -63,7 +59,6 @@ p {
     float: right
 }
 
-
 footer{
     left: 0;
     bottom: 0;
@@ -72,7 +67,14 @@ footer{
 }
 
 
-.search-box {
+footer{
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+}
+
+.search-container {
  position: absolute;
  top: 50%;
  left: 50%;
@@ -83,12 +85,33 @@ footer{
  padding: 10px;
 }
 
-.search-box:hover > .search-txt {
+.search-container:hover > .search-box {
  width: 240px;
  padding: 0 6px;
 }
 
-.search-box:hover > .search-btn {
+.search-container:hover > .search-btn {
+    background: white;
+    color: black;
+}
+
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search-container:hover > .search-box {
+ width: 240px;
+ padding: 0 6px;
+}
+
+.search-container:hover > .search-btn {
  background: white;
  color: black;
 }
@@ -112,7 +135,8 @@ footer{
  font-size: 15px;
 }
 
-.search-txt {
+
+.search-box {
  border: none;
  background: none;
  outline: none;
@@ -124,30 +148,66 @@ footer{
  line-height: 40px;
  width: 0px;
  font-weight: bold;
-}
 
-.search-box {
+}﻿
+
+
+.search-container {
  position: absolute;
  top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);
  background: #2f3640;
- height: 40px;
+ height: 30px;
  border-radius: 40px;
  padding: 10px;
 }
 
-.search-box:hover > .search-txt {
+.search-container:hover > .search-box {
  width: 240px;
  padding: 0 6px;
 }
 
+.search-container:hover > .search-btn {
+    background: white;
+    color: black;
+}
 
-.search-box:hover > .search-btn {
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    font-weight: bold;
+}﻿
+
+
+.search-container {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background: #2f3640;
+ height: 30px;
+ border-radius: 40px;
+ padding: 10px;
+}
+
+.search-container:hover > .search-box {
+ width: 240px;
+ padding: 0 6px;
+}
+
+.search-container:hover > .search-btn {
  background: white;
  color: black;
 }
-
 .search-btn {
  color: #e84118;
  float: right;
@@ -167,24 +227,66 @@ footer{
  font-size: 15px;
 }
 
-.search-txt {
+.search-box {
  border: none;
  background: none;
  outline: none;
  float: left;
  padding: 0;
- color: white;
+ color: lightslategray;
  font-size: 16px;
  transition: 0.4s;
  line-height: 40px;
  width: 0px;
  font-weight: bold;
 }
+
 
 #search-btn {
     margin-left: auto;
     color: #222222;
 }
+
+
+.homepage-container{
+    align-content: center;
+    text-align: center;
+    height: 500px
+}
+
+.search-container{
+    background-color: white;
+}
+
+#home-title{
+    margin: auto;
+    margin-top: 200px;
+    color: white;
+    font-size: 62px;
+}
+
+#home-body{
+    background-image: url("https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
+}
+
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 62px;
+}
+
+#home-body{
+    background-image: url("https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
+}
+
+
+
+
 
 
 
@@ -212,4 +314,44 @@ footer{
     border-bottom-color: black;
     font-size: large;
 }
+
+#deleting {
+    display: none;
+}
+
+#updating {
+    display: none;
+}
+
+.logged-in #deleting {
+    display: inline;
+}
+
+
+
+/*.property-img {
+    display: table-row;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top:20px;
+    margin-left: 5px;
+    margin-right:auto;
+    float: left;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+;
+}
+
+
+.name-description {
+    display: table;
+    grid-template-columns: 1fr 1fr 1fr;
+    width:65%;
+    margin-top:75px;
+    margin-left: auto;
+    margin-right:auto;
+    text-align: left;
+    float: right;
+    overflow: auto;
+}*/
 
