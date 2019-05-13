@@ -12,9 +12,10 @@ def index(request):
             'id': x.id,
             'streetname': x.streetname,
             'description': x.description,
-            'firstImage': x.propertyimage_set.first().image
-
-        } for x in Property.objects.filter(streetname__icontains=search_filter)]
+            'firstImage': x.propertyimage_set.first().image,
+            'country': x.country,
+            'size': x.size,
+        } for x in Property.objects.filter(streetname__contains=search_filter)]
         return JsonResponse({ 'data': properties })
     context = {'properties': Property.objects.all().order_by('streetname')}
     return render(request, 'property/index.html', context)
