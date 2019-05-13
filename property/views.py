@@ -63,3 +63,6 @@ def update_property(request, id):
         'form': form,
         'id' : id
     })
+
+def back(request):
+    return redirect('property-index')
