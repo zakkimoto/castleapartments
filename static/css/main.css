@@ -15,9 +15,8 @@
     opacity: 1;
 }
 
-.well{
-    height: 300px;
-    weight: 300px;
+.single-prop{
+    background: aquamarine;
 }
 
 .properties {
@@ -63,5 +62,17 @@ p {
 .description-container{
     float: right
 }
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+
+}
+
+
+
 
 

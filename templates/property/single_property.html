@@ -1,7 +1,9 @@
 <div class="well property">
-     <a href="/properties/{{ property.id }}">
-         <img class="property-img" src="{{ property.propertyimage_set.first.image }}"/>
-         <h4>{{ property.streetname }}</h4>
-         <p>{{ property.description }}</p>
-     </a>
+    <div class="single-prop">
+        <a href="/properties/{{ property.id }}">
+            <img class="property-img" src="{{ property.propertyimage_set.first.image }}"/>
+            <h4>{{ property.streetname }}</h4>
+            <p>{{ property.description }}</p>
+        </a>
+    </div>
 </div>
