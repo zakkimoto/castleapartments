@@ -133,7 +133,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+
 # If I'm not logged in or I'm trying to access something I don't have access to
 LOGIN_URL = 'user/login'
 # If I'm successfully logged in
-LOGIN_REDIRECTED_URL = '/user/profile'
+LOGIN_REDIRECT_URL = '/user/profile'

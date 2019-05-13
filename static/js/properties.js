@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d3587292ca16d658bf722fb24e8410c38a6ac896
 $(document).ready(function(){
     $('.search-btn').on('click', function(e) {
         e.preventDefault();
@@ -24,4 +29,8 @@ $(document).ready(function(){
             }
         })
     });
+
 });
+
+
+
