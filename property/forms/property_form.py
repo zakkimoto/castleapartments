@@ -11,7 +11,8 @@ class PropertyUpdateForm(ModelForm):
             'streetname': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'type': widgets.Select(attrs={'class': 'form-control'}),
-            'address': widgets.TextInput(attrs={'class': 'form-control'}),
+            'addr'
+            'ess': widgets.TextInput(attrs={'class': 'form-control'}),
             'postal_code': widgets.TextInput(attrs={'class': 'form-control'}),
             'city': widgets.TextInput(attrs={'class': 'form-control'}),
             'country': widgets.TextInput(attrs={'class': 'form-control'}),

@@ -181,3 +181,35 @@ footer{
  font-weight: bold;
 }
 
+#search-btn {
+    margin-left: auto;
+    color: #222222;
+}
+
+
+
+#logo {
+    background-image: url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60112239_319498335413191_7086137112830935040_n.png?_nc_cat=100&_nc_ht=scontent-arn2-1.xx&oh=76c9c8d37a4bce54f3a626c83835b95b&oe=5D6BA672");
+    background-image:none, url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60112239_319498335413191_7086137112830935040_n.png?_nc_cat=100&_nc_ht=scontent-arn2-1.xx&oh=76c9c8d37a4bce54f3a626c83835b95b&oe=5D6BA672");
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}
+
+#log-in {
+    background-repeat: no-repeat;
+    background-color: lightgray;
+    height: 80%;
+    width: 30%;
+    text-align: center;
+    background-size: cover;
+    overflow: hidden;
+    margin: auto;
+}
+
+#log-in-btn {
+    color: black;
+    background-color: gray;
+    border-bottom-color: black;
+    font-size: large;
+}
+

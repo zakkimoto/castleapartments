@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+    <div id="log-in-all">
+    <div id="logo"/>
+    <div id="log-in">
     <form method="post" class="form form-horizontal">
         {% csrf_token %}
         {{ form }}
-    <input type="submit" class="btn btn-primary" value="Login"/>
+    <input type="submit" class="btn btn-primary" value="Login" id="log-in-btn"/>
     </form>
-{% endblock %}
+    </div>
+    </div>
+
+{% endblock %}s
