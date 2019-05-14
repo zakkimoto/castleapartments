@@ -1,8 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-    <form method="post" class="form form-horizontal">
-        {% csrf_token %}
-        {{ form }}
-    <input type="submit" class="btn btn-primary" value="Login"/>
-    </form>
+
+
+    <div class="row main">
+        <div class="panel-heading">
+           <div class="panel-title text-center">
+               <img id="logolog" src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60179630_2444593825774317_4527021789137600512_n.png?_nc_cat=108&_nc_ht=scontent-arn2-1.xx&oh=9867c95c633be7554b495a02761ab572&oe=5D52EF39"/>
+               <hr />
+           </div>
+        </div>
+        <div class="main-login main-center">
+            <form class="form-horizontal" method="post" action="#">
+                {% csrf_token %}
+                {{ form }}
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
+                </div>
+                <div class="login-register">
+                    <a href="create_account.php">Create account</a> or <a href="#">reset password</a>
+                 </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
 {% endblock %}

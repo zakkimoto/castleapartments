@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import buyer
 
 urlpatterns = [
     path('', include('home.urls')),
@@ -24,5 +23,5 @@ urlpatterns = [
     path('sellers/', include('seller.urls')),
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
-    path('home/', include('home.urls'))
+    path('home/', include('home.urls')),
 ]

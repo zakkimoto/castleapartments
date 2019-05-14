@@ -4,7 +4,7 @@ from django.contrib.postgres.search import SearchVector
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect
 
-from buyer.models import Buyer, PaymentBuyer
+from buyer.models import PaymentBuyer, Buyer
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, PropertyBuyForm, PropertyPaymentForm
 from property.models import Property, PropertyImage
 
@@ -143,10 +143,11 @@ def update_property(request, id):
     })
 
 
+
 def buy_property(request, id):
-    instance = get_object_or_404(Property, pk=id)
+    instance = get_object_or_404(Buyer, pk=id)
     if request.method == "POST":
-        form = PropertyBuyForm(data=request.POST, instance=instance)
+        form = PropertyBuyForm(data = request.POST)
         if form.is_valid():
             form.save()
             return redirect('payment_property', id=id)
@@ -157,11 +158,10 @@ def buy_property(request, id):
         'id': id
     })
 
-
 def payment_property(request, id):
-    instance = get_object_or_404(Property, pk=id)
+    instance = get_object_or_404(PaymentBuyer, pk=id)
     if request.method == "POST":
-        form = PropertyPaymentForm(data=request.POST, instance=instance)
+        form = PropertyPaymentForm(data = request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('payment_review', id=id)
@@ -174,5 +174,5 @@ def payment_property(request, id):
 
 def payment_review(request, id):
     return render(request, 'property/payment_review.html', {
-        'review': get_object_or_404(Buyer, pk=id)
+        'review': get_object_or_404(pk=id)
     })
