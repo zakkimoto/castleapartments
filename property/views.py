@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
+
+from buyer.models import Buyer, PaymentBuyer
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, PropertyBuyForm, PropertyPaymentForm
 from property.models import Property, PropertyImage
 
@@ -64,6 +66,7 @@ def update_property(request, id):
         'id' : id
     })
 
+
 def buy_property(request, id):
     instance = get_object_or_404(Property, pk=id)
     if request.method == "POST":
@@ -84,10 +87,15 @@ def payment_property(request, id):
         form = PropertyPaymentForm(data = request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('property_details', id=id)
+            return redirect('payment_review', id=id)
     else:
         form = PropertyPaymentForm(instance=instance)
     return render(request, 'property/payment_property.html', {
         'form': form,
         'id': id
+    })
+
+def payment_review(request, id):
+    return render(request, 'property/payment_review.html', {
+        'review': get_object_or_404(Buyer, pk=id)
     })
