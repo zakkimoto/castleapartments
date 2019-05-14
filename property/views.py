@@ -36,6 +36,10 @@ def create_property(request):
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
             property_image2.save()
+            property_image3 = PropertyImage(image=request.POST['image3'], property=property)
+            property_image3.save()
+            property_image4 = PropertyImage(image=request.POST['image4'], property=property)
+            property_image4.save()
             return redirect('property-index')
     else:
         form = PropertyCreateForm()
