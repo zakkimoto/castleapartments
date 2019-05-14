@@ -30,9 +30,12 @@
 .sellers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width:100%;
+    margin-top:20px;
+    margin-left: auto;
+    margin-right:auto;
     text-align: center;
-
-
+    overflow: hidden;
 }
 
 p {
@@ -68,6 +71,11 @@ footer{
     background: white;
     background-color: #9FD8D2;
 }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 25ecc1191287cde4e5b25db5e496cb801772c13c
 .search-container {
     border-radius: 40px;
     position: absolute;
@@ -155,6 +163,13 @@ footer{
 }
 
 
+
+#search-btn {
+    margin-left: auto;
+    color: #222222;
+}
+
+
 .homepage-container{
     align-content: center;
     text-align: center;
@@ -176,6 +191,15 @@ footer{
     background-image: url("https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
 }
 
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
+>>>>>>> 25ecc1191287cde4e5b25db5e496cb801772c13c
 #logo {
     background-image: url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60112239_319498335413191_7086137112830935040_n.png?_nc_cat=100&_nc_ht=scontent-arn2-1.xx&oh=76c9c8d37a4bce54f3a626c83835b95b&oe=5D6BA672");
     background-image:none, url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60112239_319498335413191_7086137112830935040_n.png?_nc_cat=100&_nc_ht=scontent-arn2-1.xx&oh=76c9c8d37a4bce54f3a626c83835b95b&oe=5D6BA672");
@@ -201,13 +225,7 @@ footer{
     font-size: large;
 }
 
-#deleting {
-    display: none;
-}
 
-#updating {
-    display: none;
-}
 
 .logged-in #deleting {
     display: inline;
@@ -245,6 +263,8 @@ select{
     overflow: auto;
 }*/
 
+<<<<<<< HEAD
+=======
 
 
 .main{
@@ -312,3 +332,4 @@ input::-webkit-input-placeholder {
 .topnav-right {
   float: right;
 }
+>>>>>>> 25ecc1191287cde4e5b25db5e496cb801772c13c
