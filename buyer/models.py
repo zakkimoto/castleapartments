@@ -11,6 +11,8 @@ class Buyer(models.Model):
     ssc = models.CharField(max_length=10)
     email = models.CharField(max_length=200)
     new_property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.buyer_name
 
 class PaymentBuyer(models.Model):
     credit_card = models.CharField(max_length=16)
