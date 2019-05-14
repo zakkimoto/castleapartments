@@ -15,8 +15,10 @@
     </head>
     <body id="home-body">
     <div class="homepage-container">
-        <h3 id="home-title">Castle Apartments</h3>
-
+        <h3 id="home-title">Castle Apartments
+            <img src=""/>
+        </h3>
+        <div>
         <form method="get" action="{% url 'property-index' %}">
             <div class="search-container">
                 <input type="text" name="search" class="search-box" placeholder="Type to search"/>
@@ -25,12 +27,8 @@
                 </button>
             </div>
         </form>
-
-
-
+        </div>
     </div>
-
-
     </body>
     </html>
 

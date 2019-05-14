@@ -143,7 +143,6 @@ def update_property(request, id):
     })
 
 
-
 def buy_property(request, id):
     instance = get_object_or_404(Buyer, pk=id)
     if request.method == "POST":

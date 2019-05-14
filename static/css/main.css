@@ -3,6 +3,18 @@
     font-family: 'Helvetica';
 }
 
+
+#frontpagelogo {
+    width: 250px;
+    height:auto;
+}
+
+
+
+.topnav-right {
+  float: right;
+}
+
 .property-img, .seller-img{
     width:  70%;
     height: 70%;
@@ -68,6 +80,16 @@ footer{
     background: white;
     background-color: #9FD8D2;
 }
+
+
+/* Home page */
+
+.gressi{
+    position: fixed;
+    margin: auto;
+    margin-bottom: 1500px;
+}
+
 .search-container {
     position: fixed;
     top: 50%;
@@ -132,7 +154,6 @@ footer{
  height: 30px;
  border-radius: 40px;
  padding: 10px;
-    margin:auto;
 }
 
 .search-container:hover > .search-box {
@@ -206,6 +227,85 @@ footer{
     background-repeat: no-repeat;
 }
 
+
+/* Show what logged in users are allowed to do */
+
+#deleting {
+    display: none;
+}
+
+#updating {
+    display: none;
+}
+
+.logged-in #deleting {
+    display: inline;
+}
+
+
+/* Filter search */
+
+select{
+    width: 8em;
+}
+
+
+
+
+/* Login form */
+
+.main{
+ 	margin-top: 70px;
+}
+
+#logolog{
+    width: 250px;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-center{
+ 	margin-top: 300px;
+ 	margin: 0 auto;
+ 	max-width: 330px;
+    padding: 40px 40px;
+    margin-bottom: 200px;
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+
 #log-in {
     background-repeat: no-repeat;
     background-color: lightgray;
@@ -224,114 +324,8 @@ footer{
     font-size: large;
 }
 
-#deleting {
-    display: none;
-}
-
-#updating {
-    display: none;
-}
-
-.logged-in #deleting {
-    display: inline;
-}
-
-select{
-    width: 8em;
-}
 
 
 
-/*.property-img {
-    display: table-row;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top:20px;
-    margin-left: 5px;
-    margin-right:auto;
-    float: left;
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-;
-}
 
-
-.name-description {
-    display: table;
-    grid-template-columns: 1fr 1fr 1fr;
-    width:65%;
-    margin-top:75px;
-    margin-left: auto;
-    margin-right:auto;
-    text-align: left;
-    float: right;
-    overflow: auto;
-}*/
-
-
-
-.main{
- 	margin-top: 70px;
-}
-
-#logolog{
-    width: 400px;
-    height: auto;
-}
-
-hr{
-	width: 10%;
-	color: #fff;
-}
-
-.form-group{
-	margin-bottom: 15px;
-}
-
-label{
-	margin-bottom: 15px;
-}
-
-input,
-input::-webkit-input-placeholder {
-    font-size: 11px;
-    padding-top: 3px;
-}
-
-.main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 330px;
-    padding: 40px 40px;
-
-}
-
-.login-button{
-	margin-top: 5px;
-}
-
-.login-register{
-	font-size: 11px;
-	text-align: center;
-}
-
-
-#frontpagelogo {
-    width: 250px;
-    height:auto;
-}
-
-.topnav-right {
-  float: right;
-}
+/* Register form */
