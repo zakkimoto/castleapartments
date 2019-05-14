@@ -48,8 +48,16 @@
                     console.log(resp.results[0].geometry)
                     let map = new google.maps.Map(document.getElementById('map'), {
                     center: resp.results[0].geometry,
-                    zoom: 8
+                    zoom: 15
                     });
+                    var marker = new google.maps.Marker({
+                          position: resp.results[0].geometry,
+                          map: map,
+                          title: 'Hello World!'
+                        });
+
+
+
 
                 }
             });
