@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'castleapartments.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonlvevl',
-        'USER': 'sonlvevl',
-        'PASSWORD': 'Ee6qqulxgxEIIQs-3TuydtWUfTGKHi8S',
+        'NAME': 'dyivpyvb',
+        'USER': 'dyivpyvb',
+        'PASSWORD': '27lt3ynRUNEcjZILHwBImmrjNGKQ_QNv',
         'HOST': 'balarama.db.elephantsql.com',
         'PORT': '5432'
     }
@@ -133,7 +133,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+
 # If I'm not logged in or I'm trying to access something I don't have access to
 LOGIN_URL = 'user/login'
 # If I'm successfully logged in
-LOGIN_REDIRECTED_URL = '/user/profile'
+LOGIN_REDIRECT_URL = '/user/profile'

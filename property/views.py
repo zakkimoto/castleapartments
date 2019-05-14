@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm
+from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, PropertyBuyForm, PropertyPaymentForm
 from property.models import Property, PropertyImage
 
 
@@ -53,7 +53,7 @@ def delete_property(request, id):
 def update_property(request, id):
     instance = get_object_or_404(Property, pk=id)
     if request.method == "POST":
-        form = PropertyUpdateForm( data= request.POST, instance=instance)
+        form = PropertyUpdateForm(data = request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('property_details', id=id)
@@ -64,5 +64,30 @@ def update_property(request, id):
         'id' : id
     })
 
-def back(request):
-    return redirect('property-index')
+def buy_property(request, id):
+    instance = get_object_or_404(Property, pk=id)
+    if request.method == "POST":
+        form = PropertyBuyForm(data = request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('payment_property', id=id)
+    else:
+        form = PropertyBuyForm(instance=instance)
+    return render(request, 'property/buy_property.html', {
+        'form': form,
+        'id': id
+    })
+
+def payment_property(request, id):
+    instance = get_object_or_404(Property, pk=id)
+    if request.method == "POST":
+        form = PropertyPaymentForm(data = request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('property_details', id=id)
+    else:
+        form = PropertyPaymentForm(instance=instance)
+    return render(request, 'property/payment_property.html', {
+        'form': form,
+        'id': id
+    })
