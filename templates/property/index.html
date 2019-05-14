@@ -2,12 +2,63 @@
 
 {% block content %}
     <h3>Properties</h3>
-    <div class="input-group">
-        <input type="search" class="form-control" id="search-box" placeholder="Enter your search here..."/>
+    <span class="input-group">
+        <input type="text" class="form-control" id="search-box" placeholder="Enter your search here..."/>
         <div class="input-group btn">
-            <button type="button" id="search-btn" class="btn btn-default">Search</button>
-        </div>
-    </div>
+        </span>
+    <span>
+        <button type="button" id="search-btn" class="btn btn-default">Search</button>
+    </span>
+
+
+    <form method="get" action="{% url 'filter' %}">
+            <select type="dropdown-menu" name="bedrooms">
+                <option class="dropdown-item" disabled selected>Bedrooms</option>
+                <option class="dropdown-item" href="#">0</option>
+                <option class="dropdown-item" href="#">1</option>
+                <option class="dropdown-item" href="#">2</option>
+                <option class="dropdown-item" href="#">3</option>
+                <option class="dropdown-item" href="#">4</option>
+                <option class="dropdown-item" href="#">5</option>
+                <option class="dropdown-item" href="#">6</option>
+                <option class="dropdown-item" href="#">7</option>
+                <option class="dropdown-item" href="#">8</option>
+                <option class="dropdown-item" href="#">9</option>
+            </select>
+            <select type="dropdown-menu" name="Bathrooms">
+                    <option class="dropdown-item" disabled selected>Bathrooms</option>
+                    <option class="dropdown-item" href="#">0</option>
+                    <option class="dropdown-item" href="#">1</option>
+                    <option class="dropdown-item" href="#">2</option>
+                    <option class="dropdown-item" href="#">3</option>
+                    <option class="dropdown-item" href="#">4</option>
+                    <option class="dropdown-item" href="#">5</option>
+                    <option class="dropdown-item" href="#">6</option>
+                    <option class="dropdown-item" href="#">7</option>
+                    <option class="dropdown-item" href="#">8</option>
+                    <option class="dropdown-item" href="#">9</option>
+                </select>
+            <select type="dropdown-menu" name="Property-Type" >
+                <option class="dropdown-item" disabled selected>Property Type</option>
+                <option class="dropdown-item" href="#">Villa</option>
+                <option class="dropdown-item" href="#">Apartment</option>
+                <option class="dropdown-item" href="#">Summerhouse</option>
+                <option class="dropdown-item" href="#">House</option>
+                <option class="dropdown-item" href="#">Land</option>
+            </select>
+
+            <input type="text" name="Price" placeholder="Price"/>
+            <input type="text" name="city" placeholder="City"/>
+            <input type="text" name="postal_code" placeholder="Postal Code"/>
+            <input type="text" name="Size" placeholder="Size"/>
+
+            <button type="submit" class="search-btn">
+                Filter
+            </button>
+        </form>
+
+
+
 
     <div class="properties">
         {% for property in properties %}
