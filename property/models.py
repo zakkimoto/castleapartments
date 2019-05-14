@@ -19,8 +19,8 @@ class Property(models.Model):
     bathrooms = models.IntegerField()
     size = models.FloatField()
     price = models.FloatField()
-    on_sale = models.BooleanField()
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    on_sale = models.BooleanField()
     def __str__(self):
         return self.streetname
 

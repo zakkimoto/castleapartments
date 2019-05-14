@@ -12,11 +12,19 @@
 
 
     <h3>Properties</h3>
+    <div class="search-container">
+        <input type="search" class="search-box" placeholder="Enter your search here..."/>
+        <div class="input-group btn">
+            <button type="button" id="search-btn" class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+
+        </div>
+    </div>
+
     <div class="properties">
         {% for property in properties %}
             {% include 'property/single_property.html' with property=property %}
         {% endfor %}
     </div>
-
-
 {% endblock %}
