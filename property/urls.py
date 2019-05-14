@@ -12,5 +12,7 @@ urlpatterns = [
     path('update_property/<int:id>', views.update_property, name="update_property"),
     path('buy_property/<int:id>', views.buy_property, name="buy_property"),
     path('payment_property/<int:id>', views.payment_property, name="payment_property"),
-    path('payment_review', views.payment_review, name="payment_review")
+    path('payment_review', views.payment_review, name="payment_review"),
+    path('search', views.search, name="search"),
+    path('filter', views.filter, name="filter")
 ]
