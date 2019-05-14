@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ seller.first_name }}</h1>
+    <img src="{{ seller.image }}"class="seller-img"/>
+    <p>{{ seller.first_name }} {{ seller.last_name }}</p>
+    <p>{{ seller.email }}</p>
+    <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary">Update Seller</a>
+{% endblock %}
