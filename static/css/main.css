@@ -313,9 +313,6 @@ input::-webkit-input-placeholder {
     height:auto;
 }
 
-.topnav-right {
-  float: right;
-}
 
 
 .navbar, navbar-expand-lg, navbar-light {
@@ -323,16 +320,17 @@ input::-webkit-input-placeholder {
 }
 
 
+
+/*burger í miðju*/
 .navbar-toggler{
     margin: auto;
 }
 
-
 @media (max-width: 992px) {
     .nav-item{
-        margin: auto;
+    margin: auto;
     }
-    .navbar-brand{
+    #navbarTogglerDemo01{
         margin: auto;
     }
 }

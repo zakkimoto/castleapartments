@@ -27,22 +27,19 @@
         <a class="navbar-brand" href="/home">
             <img id="frontpagelogo" src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60355069_1556879224446662_7025928762332020736_n.png?_nc_cat=101&_nc_ht=scontent-arn2-1.xx&oh=591b71122a137ba6bb8446c343ec328b&oe=5D527D9A"/>
         </a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></li>
-        </ul>
+        <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <div class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></div>
+                <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
             <div class="topnav-right">
             {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><div/>
             {% else %}
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-                </ul>
+                <div class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav_right">
+                <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
+                <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
+                </div>
             {% endif %}
             </div>
-
-
     </div>
 </nav>
 
