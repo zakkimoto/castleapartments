@@ -21,8 +21,8 @@ class Property(models.Model):
     bathrooms = models.IntegerField()
     size = models.FloatField()
     price = models.FloatField()
-    on_sale = models.BooleanField()
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    on_sale = models.BooleanField(null=True)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, null=False)
     buyer = models.OneToOneField(Buyer, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

@@ -21,3 +21,7 @@ class Buyer(models.Model):
 
     def __str__(self):
         return self.buyer_name
+
+class BuyerSession(models.Model):
+    session = models.CharField(max_length=200)
+    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)

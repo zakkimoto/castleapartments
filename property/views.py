@@ -52,12 +52,9 @@ def filter(request):
         if city:
             query &= Q(city=city)
 
-        print('query = ', query)
-
         properties = Property.objects.filter(query)
 
         context = {'properties': properties}
-        print('in filter GET after QUERY')
         return render(request, 'property/index.html', context)
     else:
         return HttpResponseNotAllowed()
@@ -78,6 +75,7 @@ def search(request):
             return JsonResponse({'data': properties})
     else:
         return HttpResponseNotAllowed()
+
 
 
 def index(request):
@@ -108,8 +106,6 @@ def create_property(request):
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
             property = form.save()
-            property.on_sale = True
-            property.save()
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
