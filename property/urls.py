@@ -15,5 +15,6 @@ urlpatterns = [
     path('buy_property/<int:id>', views.buy_property, name="buy_property"),
     path('payment_property/<int:id>', views.payment_property, name="payment_property"),
     path('payment_review/<int:id>/confirm/<str:confirm>', views.payment_review, name="payment_review"),
-    path('payment_successful/', views.payment_successful, name='payment_successful')
+    path('payment_successful/', views.payment_successful, name='payment_successful'),
+    path('created_successful/', views.created_successful, name='created_successful')
 ]

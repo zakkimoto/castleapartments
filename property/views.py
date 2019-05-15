@@ -95,24 +95,30 @@ def index(request):
         return HttpResponseNotAllowed()
 
 
-# @login_required
 def get_property_by_id(request, id):
     return render(request, 'property/property_details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
 
 
+@login_required
 # @login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
             property = form.save()
+            property.on_sale = True
+            property.save()
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
             property_image2.save()
-            return redirect('property-index')
+            property_image3 = PropertyImage(image=request.POST['image3'], property=property)
+            property_image3.save()
+            property_image4 = PropertyImage(image=request.POST['image4'], property=property)
+            property_image4.save()
+            return redirect('created_successful')
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {
@@ -120,14 +126,23 @@ def create_property(request):
     })
 
 
-# @login_required
+@login_required
+def created_successful(request):
+
+    if request.method == 'GET':
+        return render(request, 'property/created_successful.html', dict())
+
+
+
+
+@login_required
 def delete_property(request, id):
     property = get_object_or_404(Property, pk=id)
     property.delete()
     return redirect('property-index')
 
 
-# @login_required
+@login_required
 def update_property(request, id):
     instance = get_object_or_404(Property, pk=id)
     if request.method == "POST":

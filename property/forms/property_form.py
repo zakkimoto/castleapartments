@@ -7,7 +7,7 @@ from buyer.models import Buyer, CreditCard
 class PropertyUpdateForm(ModelForm):
     class Meta:
         model = Property
-        exclude = [ 'id', 'buyer' ]
+        exclude = [ 'id', 'buyer', 'on_sale', 'seller' ]
         widgets = {
             'streetname': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
@@ -20,8 +20,6 @@ class PropertyUpdateForm(ModelForm):
             'bathrooms': widgets.NumberInput(attrs={'class': 'form-control'}),
             'size': widgets.NumberInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'on_sale': widgets.CheckboxInput(attrs={'class': 'form-control'}),
-            'seller': widgets.Select(attrs={'class': 'form-control'})
         }
 
 class PropertyCreateForm(ModelForm):
@@ -31,7 +29,7 @@ class PropertyCreateForm(ModelForm):
     image4 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
     class Meta:
         model = Property
-        exclude = [ 'id', 'buyer' ]
+        exclude = [ 'id', 'buyer', 'on_sale', 'seller' ]
         widgets = {
             'streetname': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Streetname'}),
             'description': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Describe your property well, try to sell it!'}),
@@ -44,8 +42,6 @@ class PropertyCreateForm(ModelForm):
             'bathrooms': widgets.NumberInput(attrs={'class': 'form-control','placeholder':'How many bathrooms are in the property?'}),
             'size': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder':'How big is the property in sqm?'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Price'}),
-            'seller': widgets.Select(attrs={'class': 'form-control'}),
-            'on_sale': widgets.CheckboxInput(attrs={'class': 'form-control'}),
         }
 
 
