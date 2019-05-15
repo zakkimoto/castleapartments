@@ -146,44 +146,15 @@ footer {
  color: black;
 }
 
-.search-btn {
- color: #e84118;
- float: right;
- width: 30px;
- height: 30px;
- border-radius: 50%;
- background: #2f3640;
- display: flex;
- justify-content: center;
- align-items: center;
- transition: 0.4s;
- color: white;
- cursor: pointer;
-}
 
 .search-btn > i {
  font-size: 15px;
 }
 
-.search-box {
- border: none;
- background: none;
- outline: none;
- float: left;
- padding: 0;
- color: lightslategray;
- font-size: 16px;
- transition: 0.4s;
- line-height: 40px;
- width: 0px;
- font-weight: bold;
-}
-
-
 .homepage-container {
     align-content: center;
     text-align: center;
-    height: 675px;
+    height: 600px;
 }
 
 .search-container {
@@ -196,12 +167,12 @@ footer {
     color: white;
     font-size: 62px;
     position: relative;
-    top: 180px
+    top: 170px
     }
 
 #home-body {
     background-image: url("https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80");
-    height: 800px;
+    height: 640px;
 }
 
 
