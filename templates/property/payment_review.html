@@ -1,12 +1,47 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <h3>Review Step</h3>
-    <form>
-        <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0" onClick="javascript:history.go(-1)"/>
-        <input type="submit" value="Next" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
+    <h1>Property bought</h1>
+    <h2>{{ property.address }}</h2>
+
+    <h1>Contact information</h1>
+    <h2>{{ buyer.buyer_name }}</h2>
+    <h2>{{ buyer.address }}</h2>
+    <h2>{{ buyer.city }}</h2>
+    <h2>{{ buyer.country }}</h2>
+    <h2>{{ buyer.postal_code }}</h2>
+    <h2>{{ buyer.ssc }}</h2>
+    <h2>{{ buyer.email }}</h2>
+
+    <h1>Payment information</h1>
+    <h2>{{ buyer.credit_card }}</h2>
+    <h2>{{ buyer.exp_date }}</h2>
+    <h2>{{ buyer.cvc }}</h2>
+
+
+    <form id="confirm-frm" method="post">
+        {% csrf_token %}
+        <a href="{% url 'payment_property' id %}">Back</a>
+        <input id="cancel-btn" type="submit" value="Cancel" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
+        <input id="confirm-btn" type="submit" value="Confirm" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
     </form>
 
+    <script>
+        $(document).ready(function() {
+            $('#cancel-btn').click(function () {
+                console.log('cancel clicked')
+                $('#confirm-frm')
+                    .attr('action', "{% url 'payment_review' id False %}")
+            })
+            $('#confirm-btn').click(function () {
+                console.log('confirm clicked')
+                $('#confirm-frm')
+                    .attr('action', "{% url 'payment_review' id True %}")
+            })
+
+        });
+    </script>
 {% endblock %}
 

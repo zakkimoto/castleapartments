@@ -1,5 +1,11 @@
 from django.db import models
-from property.models import Property
+
+
+class CreditCard(models.Model):
+    credit_card = models.CharField(max_length=16)
+    exp_date = models.CharField(max_length=5)
+    cvc = models.IntegerField()
+
 
 # Create your models here.
 class Buyer(models.Model):
@@ -10,13 +16,8 @@ class Buyer(models.Model):
     postal_code = models.CharField(max_length=200)
     ssc = models.CharField(max_length=10)
     email = models.CharField(max_length=200)
-    new_property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    credit_card = models.OneToOneField(CreditCard, on_delete=models.CASCADE, null=True)
+    #new_property = models.ForeignKey(Property, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.buyer_name
-
-class PaymentBuyer(models.Model):
-    credit_card = models.CharField(max_length=16)
-    exp_date = models.DateField()
-    cvc = models.IntegerField()
-    email = models.ForeignKey(Buyer, on_delete=models.CASCADE)
-

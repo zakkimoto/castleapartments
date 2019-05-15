@@ -1,16 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <head>
-    <script>
-    $(document).ready(function(){
-        $("[value='Next']").click(function(event) {
-            //code for Submit
-            $(".form-control").attr("disabled", "disabled"); //disable all text fields.
-            event.preventDefault();
-        });
-    });
-</script>
-    </head>
+
     <div class="create_propery">
     <form class="form form-horizontal" action="{% url 'create_property' %}" method="post">
         {% csrf_token %}

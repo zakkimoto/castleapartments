@@ -2,12 +2,12 @@ from django.forms import ModelForm, widgets
 from django import forms
 
 from property.models import Property
-from buyer.models import Buyer, PaymentBuyer
+from buyer.models import Buyer, CreditCard
 
 class PropertyUpdateForm(ModelForm):
     class Meta:
         model = Property
-        exclude = [ 'id' ]
+        exclude = [ 'id', 'buyer' ]
         widgets = {
             'streetname': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
@@ -31,7 +31,7 @@ class PropertyCreateForm(ModelForm):
     image4 = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Image URL'}))
     class Meta:
         model = Property
-        exclude = [ 'id' ]
+        exclude = [ 'id', 'buyer' ]
         widgets = {
             'streetname': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Streetname'}),
             'description': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Describe your property well, try to sell it!'}),
@@ -50,20 +50,20 @@ class PropertyCreateForm(ModelForm):
 
 
 
-class PropertyPaymentForm(ModelForm):
+class CreditCardForm(ModelForm):
     class Meta:
-        model = PaymentBuyer
-        exclude = ['email']
+        model = CreditCard
+        exclude = ['id']
         widgets = {
             'credit_card': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Credit Card Number.'}),
             'exp_date': widgets.DateInput(attrs={'class': 'form-control'}),
             'csv': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'3 digit number on back of card.'}),
         }
 
-class PropertyBuyForm(ModelForm):
+class BuyerForm(ModelForm):
     class Meta:
         model = Buyer
-        exclude = ['id']
+        exclude = ['id', 'credit_card']
         widgets = {
             'buyer_name': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your full name.'}),
             'address': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current streetname.'}),
@@ -72,5 +72,4 @@ class PropertyBuyForm(ModelForm):
             'postal_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current postal code.'}),
             'ssc': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your social security number.'}),
             'email': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your email.'}),
-            'new_property': widgets.Select(attrs={'class': 'form-control'})
         }

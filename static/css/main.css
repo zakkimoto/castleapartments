@@ -10,7 +10,6 @@
 }
 
 
-
 .topnav-right {
   float: right;
 }
@@ -228,21 +227,6 @@ footer{
 }
 
 
-/* Show what logged in users are allowed to do */
-
-#deleting {
-    display: none;
-}
-
-#updating {
-    display: none;
-}
-
-.logged-in #deleting {
-    display: inline;
-}
-
-
 /* Filter search */
 
 select{
@@ -324,8 +308,3 @@ input::-webkit-input-placeholder {
     font-size: large;
 }
 
-
-
-
-
-/* Register form */

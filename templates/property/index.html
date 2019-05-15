@@ -4,12 +4,10 @@
     <h3>Properties</h3>
     <span class="input-group">
         <input type="text" class="form-control" id="search-box" placeholder="Enter your search here..."/>
-        <div class="input-group btn">
-        </span>
+    </span>
     <span>
         <button type="button" id="search-btn" class="btn btn-default">Search</button>
     </span>
-
 
     <form method="get" action="{% url 'filter' %}">
             <select type="dropdown-menu" name="bedrooms">
@@ -66,3 +64,4 @@
     {% endfor %}
     </div>
 {% endblock %}
+
