@@ -31,14 +31,14 @@
                 <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
             <div class="topnav-right">
             {% if user.is_authenticated %}
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><liv/>
-                </ul>
+                <div class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <div class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></div>
+                    <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><li/>
+                </div>
             {% else %}
                 <div class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav_right">
-                <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
-                <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
+                    <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
+                    <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
                 </div>
             {% endif %}
             </div>
