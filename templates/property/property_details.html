@@ -4,6 +4,11 @@
     <p id="address">{{ property.address }}</p>
     <p id="zip">{{ property.postal_code }}</p>
     <div class="description-container">
+        {% if property.on_sale == True %}
+            <p style="color:green;">ON SALE</p>
+        {% else %}
+            <p style="color:red;">SOLD</p>
+        {% endif %}
         <p id="city">{{ property.city }}</p>
         <p id="country">{{ property.country }}</p>
         <p>{{ property.bedrooms }}</p>
@@ -56,15 +61,43 @@
                         title: 'Hello World!',
 
                     });
-                    marker.addListener('click', toggleBounce);
+                    var contentString = '<div id="content">' +
+                        '<div id="siteNotice">' +
+                        '</div>' +
+                        '<h1 id="firstHeading" class="firstHeading">{{property.address }}</h1>' +
+                        '<div id="bodyContent">' +
+                        '<p>{{ property.address }} has {{ property.bedrooms }} bedrooms ' +
+                        'and ' +
+                        '{{ property.bathrooms }}' +
+                        ' bathroom/s, ' +
+                        'This property is ' +
+                        '{{ property.size }} ' +
+                        'square meters, ' +
+                        'this property costs ' +
+                        '{{ property.price }}' +
+                        '$'+
+                        {% if property.on_sale == True %}
+                            '<p style="color:green;">ON SALE</p>'+
+                        {% else %}
+                            '<p style="color:red;">SOLD</p>'+
+                        {% endif %}
+                        ''+
+                        '</p>' +
+                        '<div class="property-imgs">\n' +
+                        '        {% for property_image in property.propertyimage_set.all %}\n'+
+                            '            <img src="{{ property_image.image }}" class="property-img"/>\n'+
+                            '        {% endfor %}\n' +
+                        '    </div>' +
+                        '</div>' +
+                        '</div>';
 
-                    function toggleBounce() {
-                        if (marker.getAnimation() !== null) {
-                            marker.setAnimation(null);
-                        } else {
-                            marker.setAnimation(google.maps.Animation.BOUNCE);
-                        }
-                    }
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
 
 
                 }
