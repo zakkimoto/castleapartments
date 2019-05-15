@@ -349,7 +349,7 @@ property-details{
 
 
 #logolog {
-    width: 400px;
+    width: 250px;
     height: auto;
     margin-bottom: 50px;
 }
@@ -447,4 +447,8 @@ input::-webkit-input-placeholder {
     #navbarTogglerDemo01 {
         margin: auto;
     }
+}
+
+.topnav-right{
+    float: right;
 }

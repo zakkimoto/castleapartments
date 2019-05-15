@@ -31,14 +31,10 @@
                 <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
             <div class="topnav-right">
             {% if user.is_authenticated %}
-<<<<<<< HEAD
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><liv/>
                 </ul>
-=======
-                <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><div/>
->>>>>>> 692835ddfd0a8f1d01bae99dd5876564c0de1dd8
             {% else %}
                 <div class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav_right">
                 <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
@@ -46,17 +42,15 @@
                 </div>
             {% endif %}
             </div>
+            </div>
+        </div>
     </div>
 </nav>
 
-<<<<<<< HEAD
-<div class="container text-center text-center">
-=======
 
->>>>>>> 692835ddfd0a8f1d01bae99dd5876564c0de1dd8
+
 {% block content %}
 {% endblock %}
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
