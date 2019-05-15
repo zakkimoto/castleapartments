@@ -3,6 +3,6 @@
     <h1>{{ seller.first_name }}</h1>
     <img src="{{ seller.image }}"class="seller-img"/>
     <p>{{ seller.first_name }} {{ seller.last_name }}</p>
-    <p>{{ seller.email }}</p>
-    <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary">Update Seller</a>
+    <a href="mailto:{{ seller.email }}?subject=Castle Apartments">Email: {{ seller.email }}</a>
+    <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary">Edit Profile</a>
 {% endblock %}
