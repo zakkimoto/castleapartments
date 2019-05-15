@@ -9,7 +9,7 @@
         {% else %}
             <p style="color:red;">SOLD</p>
         {% endif %}
-        <p id="city">{{ property.city }}</p>
+        <p id="city">{{ p roperty.city }}</p>
         <p id="country">{{ property.country }}</p>
         <p>{{ property.bedrooms }}</p>
         <p>{{ property.bathrooms }}</p>
@@ -81,7 +81,7 @@
                         {% else %}
                             '<p style="color:red;">SOLD</p>'+
                         {% endif %}
-                        ''+
+                        '{{ property.description }}'+
                         '</p>' +
                         '<div class="property-imgs">\n' +
                         '        {% for property_image in property.propertyimage_set.all %}\n'+
@@ -106,6 +106,7 @@
 
 
         function initMap() {
+            console.log("Zakki er hér")
             let address = $("#address").html()
             let country = $("#country").html()
             let city = $("#city").html()

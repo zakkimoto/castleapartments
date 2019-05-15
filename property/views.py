@@ -9,6 +9,7 @@ from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm,
 from property.models import Property, PropertyImage
 
 
+
 # def index(request):
 #    if 'search_filter' in request.GET:
 #        search_filter = request.GET['search_filter']
