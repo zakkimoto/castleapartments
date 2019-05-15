@@ -1,22 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ property.streetname }}</h1>
-    <p id="address">{{ property.address }}</p>
-    <p id="zip">{{ property.postal_code }}</p>
-    <div class="description-container">
-        {% if property.on_sale == True %}
-            <p style="color:green;">ON SALE</p>
-        {% else %}
-            <p style="color:red;">SOLD</p>
-        {% endif %}
-        <p id="city">{{ property.city }}</p>
-        <p id="country">{{ property.country }}</p>
-        <p>{{ property.bedrooms }}</p>
-        <p>{{ property.bathrooms }}</p>
-        <p>{{ property.size }}</p>
-        <p>{{ property.price }}kr.</p>
-        <p>Type of property: {{ property.propertytype.name }}</p>
-        <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
+
+        <div class="head-photo">
+                <div class="property-details">
+                    <img src="{{ property.propertyimage_set.first.image }}">
+                <div class="property-title-container" >
+                    <div class="property-title">
+                        <h1 class="prop-title">{{ property.streetname }}</h1>
+                        <p class="prop-title">{{ property.city}}, {{property.country}}</p>
+                        <p class="prop-title">{{ property.description }}</p>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+
+
+    <div class="newline">
+
+        <h1>{{ property.streetname }}</h1>
+        <p id="address">{{ property.address }}</p>
+        <p id="zip">{{ property.postal_code }}</p>
+        <div class="description-container">
+            {% if property.on_sale == True %}
+                <p style="color:green;">ON SALE</p>
+            {% else %}
+                <p style="color:red;">SOLD</p>
+            {% endif %}
+            <p id="city">{{ property.city }}</p>
+            <p id="country">{{ property.country }}</p>
+            <p>{{ property.bedrooms }}</p>
+            <p>{{ property.bathrooms }}</p>
+            <p>{{ property.size }}</p>
+            <p>{{ property.price }}kr.</p>
+            <p>Type of property: {{ property.propertytype.name }}</p>
+            <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
+        </div>
+        <div class="property-imgs">
+            {% for property_image in property.propertyimage_set.all %}
+                 <img class="detail-property-img" src="{{ property_image.image }}"/>
+            {% endfor %}
+        </div>
     </div>
     <div class="property-imgs">
         {% for property_image in property.propertyimage_set.all %}
@@ -25,8 +49,22 @@
             {% endif %}
 
         {% endfor %}
+
+
+
+
+
+
+    <div class="card">
+      <div class="seller-card">
+        <img class="detail-seller-img" src="{{ property.seller.image }}"></a>
+        <div class="card-body">
+          <h4 class="card-title">{{ property.seller }}</h4>
+        </div>
+      </div>
     </div>
     <p>{{ property.description }}</p>
+    {% if user.is_authenticated %}
 
     <!--
     GOOGLE MAP FER HÉR UNDIR kv. Zakki
@@ -126,11 +164,13 @@
 
     <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
     <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
+    {% else %}
     <a href="{% url 'buy_property' property.id %}" class="block btn btn-primary">Buy property</a>
     <form>
         <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>
     </form>
+    {% endif %}
 
 
 

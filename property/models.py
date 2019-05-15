@@ -1,4 +1,6 @@
 from django.db import models
+
+from buyer.models import Buyer
 from seller.models import Seller
 # Create your models here.
 
@@ -19,8 +21,10 @@ class Property(models.Model):
     bathrooms = models.IntegerField()
     size = models.FloatField()
     price = models.FloatField()
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     on_sale = models.BooleanField()
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    buyer = models.OneToOneField(Buyer, on_delete=models.SET_NULL, null=True)
+
     def __str__(self):
         return self.streetname
 
