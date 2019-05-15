@@ -1,5 +1,10 @@
-<div class="well seller">
-    <div class="seller-img" style="background-image: url('{{ seller.image }}')"></div>
-    <h4>{{ seller.first_name}} {{seller.last_name }}</h4>
-    <p>Email: {{ seller.email }}</p>
+<div class="well seller" id="container_seller">
+    <a href="/sellers/{{ seller.id }}">
+        <div id="row_seller">
+            <div id="col_seller">
+        <img class="seller-img" src="{{ seller.image }}"/>
+        <h4>{{ seller.first_name}} {{seller.last_name }}</h4>
+            </div>
+        </div>
+    </a>
 </div>

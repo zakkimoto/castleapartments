@@ -118,7 +118,11 @@ def create_property(request):
             property_image3.save()
             property_image4 = PropertyImage(image=request.POST['image4'], property=property)
             property_image4.save()
+<<<<<<< HEAD
             return redirect('created_successful')
+=======
+            return redirect('property-index')
+>>>>>>> 692835ddfd0a8f1d01bae99dd5876564c0de1dd8
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {

@@ -1,9 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('v')"> Villa</button>
+        <button class="btn" onclick="filterSelection('a')"> Apartment</button>
+        <button class="btn" onclick="filterSelection('sh')"> Summer House</button>
+        <button class="btn" onclick="filterSelection('h')"> House</button>
+        <button class="btn" onclick="filterSelection('l')"> Land</button>
+    </div>
+
+
     <h3>Properties</h3>
     <span class="input-group">
         <input type="text" class="form-control" id="search-box" placeholder="Enter your search here..."/>
+<<<<<<< HEAD
+=======
+        <div class="input-group btn"></div>
+>>>>>>> 692835ddfd0a8f1d01bae99dd5876564c0de1dd8
     </span>
     <span>
         <button type="button" id="search-btn" class="btn btn-default">Search</button>
@@ -60,8 +74,8 @@
 
     <div class="properties">
         {% for property in properties %}
-        {% include 'property/single_property.html' with property=property %}
-    {% endfor %}
+            {% include 'property/single_property.html' with property=property %}
+        {% endfor %}
     </div>
 {% endblock %}
 
