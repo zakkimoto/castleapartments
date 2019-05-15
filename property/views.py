@@ -2,10 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.postgres.search import SearchVector
 from django.http import JsonResponse, HttpResponseNotAllowed
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-from buyer.models import PaymentBuyer, Buyer
-from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, PropertyBuyForm, PropertyPaymentForm
+
+from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
 
 
@@ -95,19 +95,21 @@ def index(request):
         return HttpResponseNotAllowed()
 
 
-# @login_required
 def get_property_by_id(request, id):
     return render(request, 'property/property_details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
 
 
+@login_required
 # @login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
             property = form.save()
+            property.on_sale = True
+            property.save()
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
@@ -116,7 +118,11 @@ def create_property(request):
             property_image3.save()
             property_image4 = PropertyImage(image=request.POST['image4'], property=property)
             property_image4.save()
+
+            return redirect('created_successful')
+
             return redirect('property-index')
+
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {
@@ -124,14 +130,23 @@ def create_property(request):
     })
 
 
-# @login_required
+@login_required
+def created_successful(request):
+
+    if request.method == 'GET':
+        return render(request, 'property/created_successful.html', dict())
+
+
+
+
+@login_required
 def delete_property(request, id):
     property = get_object_or_404(Property, pk=id)
     property.delete()
     return redirect('property-index')
 
 
-# @login_required
+@login_required
 def update_property(request, id):
     instance = get_object_or_404(Property, pk=id)
     if request.method == "POST":
@@ -147,36 +162,105 @@ def update_property(request, id):
     })
 
 
-
 def buy_property(request, id):
-    instance = get_object_or_404(Buyer, pk=id)
+    property = get_object_or_404(Property, pk=id)
     if request.method == "POST":
-        form = PropertyBuyForm(data = request.POST)
+
+        if property.buyer:
+            form = BuyerForm(data = request.POST, instance=property.buyer)
+        else:
+            form = BuyerForm(data=request.POST)
+
         if form.is_valid():
-            form.save()
-            return redirect('payment_property', id=id)
+            buyer = form.save()
+            property.buyer = buyer
+            property.save()
+
+            #return redirect('payment_property', id=id)
+            return redirect(reverse('payment_property', args=[id]))
+        else:
+            return render(request, 'property/buy_property.html', {
+                'form': form,
+                'id': id
+            })
     else:
-        form = PropertyBuyForm(instance=instance)
+
+        if property.buyer:
+            form = BuyerForm(instance=property.buyer)
+        else:
+            form = BuyerForm()
+
     return render(request, 'property/buy_property.html', {
         'form': form,
         'id': id
     })
 
 def payment_property(request, id):
-    instance = get_object_or_404(PaymentBuyer, pk=id)
-    if request.method == "POST":
-        form = PropertyPaymentForm(data = request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect('payment_review', id=id)
-    else:
-        form = PropertyPaymentForm(instance=instance)
-    return render(request, 'property/payment_property.html', {
-        'form': form,
-        'id': id
-    })
+    property = get_object_or_404(Property, pk=id)
 
-def payment_review(request, id):
-    return render(request, 'property/payment_review.html', {
-        'review': get_object_or_404(pk=id)
-    })
+    if request.method == "POST":
+
+        if property.buyer.credit_card:
+            form = CreditCardForm(data = request.POST, instance=property.buyer.credit_card)
+        else:
+            form = CreditCardForm(data = request.POST)
+
+        if form.is_valid():
+            print("valid")
+            credit_card = form.save()
+            buyer = property.buyer
+            buyer.credit_card = credit_card
+            buyer.save()
+            return redirect(reverse('payment_review', args=[id, None]))
+        else:
+            print("not valid")
+            context = {
+                'form': form,
+                'id': id}
+    else:
+        print("get")
+        if property.buyer.credit_card:
+            context = {
+                'form': CreditCardForm(instance=property.buyer.credit_card),
+                'id': id}
+        else:
+            context = {
+                'form': CreditCardForm(),
+                'id': id}
+
+    return render(request, 'property/payment_property.html', context)
+
+
+def payment_review(request, id, confirm):
+    print('confirm ', confirm)
+    property = get_object_or_404(Property, pk=id)
+
+    if request.method == "POST":
+        print('in POST')
+
+        if confirm == "True":
+            property.on_sale = False
+            property.save()
+
+            return redirect(reverse('payment_successful'))
+            print('confirmed')
+
+
+        else:
+            property.buyer.credit_card.delete()
+            property.refresh_from_db()
+            property.on_sale = True
+            property.save()
+
+            return redirect(reverse('property-index'))
+    else:
+        return render(request, 'property/payment_review.html', {
+            'property': get_object_or_404(Property, pk=id),
+            'id': id
+        })
+
+def payment_successful(request):
+
+    if request.method == 'GET':
+        return render(request, 'property/payment_successful.html', dict())
+
