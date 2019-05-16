@@ -21,6 +21,7 @@
     margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 5px;
 }
 
 .property-img {
@@ -341,7 +342,7 @@ select {
     margin-bottom: 50px
 }
 
-property-details{
+.property-details{
     margin: 20px;
     display: block;
 
@@ -460,3 +461,135 @@ input::-webkit-input-placeholder {
 .topnav-right{
     float: right;
 }
+
+#title{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5%;
+
+}
+/*propety síða*/
+#search-box-prop{
+    margin:auto;
+    width: 90%;
+}
+
+#search-btn-prop{
+    margin-left: 15px;
+    background-color: lightgray;
+    border: black;
+    margin-bottom: 10px;
+}
+
+#search-btn-prop{
+    background-color: lightgray;
+    border: none;
+    color: black;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.property-filters{
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+#search-btn-filter, #order-by {
+    background-color: lightgray;
+    border: none;
+    color: black;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+#order-by{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#order-btn{
+    margin-right: 5px;
+}
+
+#drop-style{
+    background-color: lightgray;
+    color: black;
+    font-size: 16px;
+    margin-left:15px;
+}
+
+#filer-fill{
+    color: black;
+    margin-left: 15px;
+}
+
+.bedroom-drop{
+    align-items: center;
+}
+
+.order-by-div{
+    margin-left: 15px;
+}
+
+/*seller og propety síða*/
+.single a{
+    color: black;
+    text-align: center;
+    margin: 20px;
+}
+
+.single a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.single:hover img {
+    opacity: 0.3;
+}
+
+.caption{
+    margin-top: 5px;
+}
+
+.seller-img-det{
+    margin-left: 5%;
+    width: 50%;
+    top: 50%;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+
+#seller-info-div{
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+#edit-profile-btn{
+    margin-top: 2%;
+    color:black;
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+#seller-email{
+    color: black;
+    margin-bottom: 2%;
+}
+
+#email:hover:after {
+    content: " > " attr(title);
+}
+ #email{
+     color: black;
+     font-size: 20px;
+     text-decoration: underline;
+ }

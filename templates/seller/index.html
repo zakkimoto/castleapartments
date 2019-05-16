@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Sellers</h3>
+<h3 id="title">Sellers</h3>
     <div class="sellers">
         {% for seller in sellers %}
             {% include 'seller/single_seller.html' with seller=seller %}
         {% endfor %}
     </div>
-
-
 {% endblock %}
+
