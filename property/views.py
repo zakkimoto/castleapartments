@@ -13,7 +13,7 @@ from buyer.models import BuyerSession
 
 
 
-from bs4 import BeautifulSoup as soup
+
 
 
 # def index(request):

@@ -264,12 +264,10 @@ class Buyer(models.Model):
 
 class BuyerSession(models.Model):
     session = models.CharField(max_length=200)
-<<<<<<< HEAD
     search_term = models.CharField(max_length=200)
     #buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.search_term
-=======
-    buyer = models.ForeignKey(Buyer, on_delete=models.DO_NOTHING)
->>>>>>> 4d45a6d19198cba287bc1a91f5834b5265ffdfca
+
+
