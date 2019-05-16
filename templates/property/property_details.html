@@ -1,35 +1,74 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ property.streetname }}</h1>
-    <p id="address">{{ property.address }}</p>
-    <p id="zip">{{ property.postal_code }}</p>
-    <div class="description-container">
-        {% if property.on_sale == True %}
-            <p style="color:green;">ON SALE</p>
-        {% else %}
-            <p style="color:red;">SOLD</p>
-        {% endif %}
-        <p id="city">{{ property.city }}</p>
-        <p id="country">{{ property.country }}</p>
-        <p>{{ property.bedrooms }}</p>
-        <p>{{ property.bathrooms }}</p>
-        <p>{{ property.size }}</p>
-        <p>{{ property.price }}kr.</p>
-        <p>Type of property: {{ property.propertytype.name }}</p>
-        <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
+
+ <div class="head-photo">
+        <div class="property-details">
+            <img src="{{ property.propertyimage_set.first.image }}">
+            <div class="property-title-container" >
+                <div class="property-title">
+                    <h1 class="prop-title">{{ property.streetname }}</h1><br><br>
+                    <p class="prop-title">{{ property.city}}, {{property.country}}</p><br>
+                    <p class="prop-title">{{ property.description }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="property-imgs">
-        {% for property_image in property.propertyimage_set.all %}
-            <img src="{{ property_image.image }}" class="property-img"/>
-        {% endfor %}
+
+
+<div class="nextline">
+    <div class="detail-imgs">
+        <div class="property-imgs">
+            {% for property_image in property.propertyimage_set.all %}
+                 <img class="detail-property-img" src="{{ property_image.image }}"/>
+            {% endfor %}
+        </div>
     </div>
-    <p>{{ property.description }}</p>
+</div>
+
+<div class="property-information">
+    <div class="info-title">
+        <h3> {{ property.address }}</h3>
+        <h6>{{ property.city }}, {{ property.country }}</h6>
+        <p>{{ property.description }}</p>
+    </div>
+    <div class="info-list">
+        <ul class="dashed">
+            {% if property.on_sale == True %}
+                <li style="color:green;">ON SALE</li>
+            {% else %}
+                <li style="color:red;">SOLD</li>
+            {% endif %}
+            <li id ="address">{{ property.address }}</li>
+            <li id ="city">{{ property.city }}</li>
+            <li id ="country">{{ property.country }}</li>
+            <li>{{ property.postal_code }}</li>
+            <li>{{ property.bedrooms }} Bedrooms</li>
+            <li>{{ property.bathrooms }} Bathrooms</li>
+            <li>{{ property.size }} sqft</li>
+            <li>{{ property.seller }}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="seller">
+    <div class="card">
+        <div class="seller-card">
+            <img class="detail-seller-img" src="{{ property.seller.image }}"></a>
+            <div class="card-body">
+              <h4 class="card-title">{{ property.seller }}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
     <!--
     GOOGLE MAP FER HÉR UNDIR kv. Zakki
     -->
 
-    <html>
+<html>
     <head>
         <style>
             /* Set the size of the div element that contains the map */
@@ -40,9 +79,10 @@
         </style>
     </head>
     <body>
+
     <h3>House Address</h3>
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map">
     <script>
 
         function getLong(address, contry, city) {
@@ -81,7 +121,7 @@
                         {% else %}
                             '<p style="color:red;">SOLD</p>'+
                         {% endif %}
-                        '{{ property.description }}'+
+                        ''+
                         '</p>' +
                         '<div class="property-imgs">\n' +
                         '        {% for property_image in property.propertyimage_set.all %}\n'+
@@ -115,22 +155,26 @@
 
         // Initialize and add the map
     </script>
+    </div>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXcg5h7Xmgq6UjFkCC1JgIWUKs_iqfNU4&callback=initMap">
     </script>
 
     </body>
-    </html>
+</html>
+
     {% if user.is_authenticated %}
-    <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
-    <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
+        <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
+        <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
     {% else %}
-    <a href="{% url 'buy_property' property.id %}" class="block btn btn-primary">Buy property</a>
+    <a href="{% url 'buy_property' property.id %}" class="buy-property">Buy property</a>
     <form>
-        <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"
+        <input type="button" value="Back" class="button_back" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>
     </form>
     {% endif %}
+
+
 
 
 

@@ -31,7 +31,7 @@
         <div class="navbar-nav ml-auto mt-2 mt-lg-0">
             <div class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></div>
             <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
             <div class="navbar-nav mc-auto mt-2 mt-lg-0">
                 <div class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></div>
                 <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><li/>
@@ -43,6 +43,9 @@
                 </div>
                 </div>
             {% endif %}
+            </div>
+            </div>
+
         </div>
     </div>
 </nav>
@@ -66,9 +69,9 @@
 <script src="{% static 'js/properties.js' %}"></script>
 
 <!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
+<footer class="page-footer font-small ">
 
-  <div style="background-color: #9FD8D2;">
+  <div class="footer-banner">
     <div class="container">
 
       <!-- Grid row-->

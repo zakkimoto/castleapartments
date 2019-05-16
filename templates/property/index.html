@@ -2,18 +2,15 @@
 
 {% block content %}
 
-    <h3>Properties</h3>
-    <span class="input-group">
+    <h3 id="title">Properties</h3>
+    <span class="input-group" id="search-box-prop">
         <input type="text" class="form-control" id="search-box" placeholder="Enter your search here..."/>
-
-        <div class="input-group btn"></div>
-    </span>
-    <span>
-        <button type="button" id="search-btn" class="btn btn-default">Search</button>
+        <button type="button" id="search-btn-prop" class="btn btn-default">Search</button>
     </span>
 
-    <form method="get" action="{% url 'filter' %}">
-            <select type="dropdown-menu" name="Bedrooms">
+
+    <form method="get" action="{% url 'filter' %}" class="property-filters">
+            <select type="dropdown-menu" name="Bedrooms" id="drop-style" class="bedroom-drop">
                 <option class="dropdown-item" disabled selected>Bedrooms</option>
                 <option class="dropdown-item" href="#">0</option>
                 <option class="dropdown-item" href="#">1</option>
@@ -26,7 +23,7 @@
                 <option class="dropdown-item" href="#">8</option>
                 <option class="dropdown-item" href="#">9</option>
             </select>
-            <select type="dropdown-menu" name="Bathrooms">
+            <select type="dropdown-menu" name="Bathrooms" id="drop-style">
                     <option class="dropdown-item" disabled selected>Bathrooms</option>
                     <option class="dropdown-item" href="#">0</option>
                     <option class="dropdown-item" href="#">1</option>
@@ -39,7 +36,7 @@
                     <option class="dropdown-item" href="#">8</option>
                     <option class="dropdown-item" href="#">9</option>
                 </select>
-            <select type="dropdown-menu" name="Property-Type" >
+            <select type="dropdown-menu" name="Property-Type"  id="drop-style">
                 <option class="dropdown-item" disabled selected>Property Type</option>
                 <option class="dropdown-item" href="#">Villa</option>
                 <option class="dropdown-item" href="#">Apartment</option>
@@ -48,23 +45,21 @@
                 <option class="dropdown-item" href="#">Land</option>
             </select>
 
-            <input type="text" name="Price" placeholder="Price"/>
-            <input type="text" name="City" placeholder="City"/>
-            <input type="text" name="Postal_code" placeholder="Postal Code"/>
-            <input type="text" name="Size" placeholder="Size"/>
 
-            <div>
-            <h6>Order by:</h6>
-            <input type="radio" name="order" value="Price">Price<br>
-            <input type="radio" name="order" value="Streetname">Name<br>
-            </div>
+            <input type="text" name="price" placeholder="Price" id="filter-fill"/>
+            <input type="text" name="city" placeholder="City" id="filter-fill"/>
+            <input type="text" name="postal_code" placeholder="Postal Code" id="filter-fill"/>
+            <input type="text" name="size" placeholder="Size" id="filter-fill"/>
+        <button type="submit" id="search-btn-filter" class="btn btn-default">
+            Filter
+        </button>
 
-
-            <button type="submit" class="search-btn">
-                Filter
-            </button>
-        </form>
-
+        <div class="order-by-div">Order by:<select type="dropdown-menu" name="Order" id="order-by">
+                <option class="dropdown-item">Name</option>
+                <option class="dropdown-item">Price</option>
+        </select>
+        </div>
+    </form>
 
 
 
