@@ -243,7 +243,7 @@ COUNTRY_CHOICES = (
 )
 class CreditCard(models.Model):
     credit_card = models.CharField(max_length=16)
-    exp_date = models.CharField(max_length=5)
+    exp_date = models.CharField(max_length=100)
     cvc = models.IntegerField()
 
 
@@ -264,4 +264,4 @@ class Buyer(models.Model):
 
 class BuyerSession(models.Model):
     session = models.CharField(max_length=200)
-    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(Buyer, on_delete=models.DO_NOTHING)

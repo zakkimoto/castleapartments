@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<<<<<<< HEAD
-
 
  <div class="head-photo">
         <div class="property-details">
@@ -212,17 +210,12 @@
 
     </body>
     </html>
-<<<<<<< HEAD
 
-    <button href="{% url 'delete_property' property.id %}" class="button_deleting" id="deleting">Delete property</button>
-    <button href="{% url 'update_property' property.id %}" class="button_update" id="updating">Update property</button>
-=======
     {% if user.is_authenticated %}
-    <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
-    <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
->>>>>>> e00f6158ab0f4dba1d22f099d5211d4316697225
+        <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
+        <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
     {% else %}
-    <button href="{% url 'buy_property' property.id %}" class="buy_property">Buy property</button>
+    <a href="{% url 'buy_property' property.id %}" class="buy-property">Buy property</a>
     <form>
         <input type="button" value="Back" class="button_back" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>

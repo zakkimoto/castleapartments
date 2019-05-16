@@ -31,32 +31,7 @@
         <div class="navbar-nav ml-auto mt-2 mt-lg-0">
             <div class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></div>
             <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
-            {% if user.is_authenticated %}
-<<<<<<< HEAD
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><liv/>
-                </ul>
-                <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><div/>
-
-            {% else %}
-                <div class="navbar-nav mr-auto mt-2 mt-lg-0" id="nav_right">
-                <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
-                <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
-                </div>
-            {% endif %}
-            </div>
-            </div>
-
-        </div>
-    </div>
-</nav>
-
-
-<div class="container text-center text-center">
-
-            </div>
-=======
+        {% if user.is_authenticated %}
             <div class="navbar-nav mc-auto mt-2 mt-lg-0">
                 <div class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></div>
                 <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><li/>
@@ -68,7 +43,9 @@
                 </div>
                 </div>
             {% endif %}
->>>>>>> e00f6158ab0f4dba1d22f099d5211d4316697225
+            </div>
+            </div>
+
         </div>
     </div>
 </nav>

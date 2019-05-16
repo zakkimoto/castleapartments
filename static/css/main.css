@@ -457,7 +457,7 @@ input::-webkit-input-placeholder {
     float: right;
 }
 
-.buy_property, .button_back, .button_deleting, .button_update{
+.buy-property, .button_back, .button_deleting, .button_update{
     background: lightgrey;
     border-radius: 100px;
     padding: 10px 20px;
