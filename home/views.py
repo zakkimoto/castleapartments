@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+
+from buyer.models import BuyerSession
 from property.models import Property
 
 # Create your views here.
@@ -18,6 +20,9 @@ def index(request):
             'size': x.size,
         } for x in Property.objects.filter(streetname__contains=search_filter)]
         return JsonResponse({'data': properties})
-    context = {'properties': Property.objects.all().order_by('streetname')}
+
+    searches = BuyerSession.objects.filter(session=request.session.session_key)
+    context = {'properties': Property.objects.all().order_by('streetname'),
+               "searches": searches}
     return render(request, 'home/index.html', context)
 

@@ -3,9 +3,18 @@
     <div class="single-prop">
         <a href="/properties/{{ property.id }}">
             <img class="property-img" src="{{ property.propertyimage_set.first.image }}"/>
+            <div class="caption">
+                 <h4>{{ property.streetname }}</h4>
+                 <p>{{ property.description }}</p>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                    <p class="lead">{{ property.price }}$.</p>
+                    </div>
                 <div class="caption">
                      <h4>{{ property.streetname }}</h4>
                 </div>
+                </div>
+            </div>
         </a>
     </div>
 </div>
