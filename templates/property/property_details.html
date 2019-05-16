@@ -1,24 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <div class="head-photo">
-                <div class="property-details">
-                    <img src="{{ property.propertyimage_set.first.image }}">
-                <div class="property-title-container" >
-                    <div class="property-title">
-                        <h1 class="prop-title">{{ property.streetname }}</h1>
-                        <p class="prop-title">{{ property.city}}, {{property.country}}</p>
-                        <p class="prop-title">{{ property.description }}</p>
-                    </div>
-                </div>
 
+ <div class="head-photo">
+        <div class="property-details">
+            <img src="{{ property.propertyimage_set.first.image }}">
+            <div class="property-title-container" >
+                <div class="property-title">
+                    <h1 class="prop-title">{{ property.streetname }}</h1><br><br>
+                    <p class="prop-title">{{ property.city}}, {{property.country}}</p><br>
+                    <p class="prop-title">{{ property.description }}</p>
                 </div>
+            </div>
         </div>
+    </div>
 
 
-    <div class="newline">
+<div class="nextline">
+    <div class="detail-imgs">
+        <div class="property-imgs">
+            {% for property_image in property.propertyimage_set.all %}
+                 <img class="detail-property-img" src="{{ property_image.image }}"/>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
-        <h1>{{ property.streetname }}</h1>
+<div class="property-information">
+    <div class="info-title">
+        <h3> {{ property.address }}</h3>
+        <h6>{{ property.city }}, {{ property.country }}</h6>
+        <p>{{ property.description }}</p>
+    </div>
+    <div class="info-list">
+        <ul class="dashed">
+            {% if property.on_sale == True %}
+                <li style="color:green;">ON SALE</li>
+            {% else %}
+                <li style="color:red;">SOLD</li>
+            {% endif %}
+            <li>{{ property.address }}</li>
+            <li>{{ property.city }}</li>
+            <li>{{ property.country }}</li>
+            <li>{{ property.postal_code }}</li>
+            <li>{{ property.bedrooms }} Bedrooms</li>
+            <li>{{ property.bathrooms }} Bathrooms</li>
+            <li>{{ property.size }} sqft</li>
+            <li>{{ property.seller }}</li>
+        </ul>
+    </div>
+</div>
+{% comment %}<div class=haxxx">
+    <h1>{{ property.streetname }}</h1>
         <p id="address">{{ property.address }}</p>
         <p id="zip">{{ property.postal_code }}</p>
         <div class="description-container">
@@ -36,30 +69,26 @@
             <p>Type of property: {{ property.propertytype.name }}</p>
             <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
         </div>
-        <div class="property-imgs">
-            {% for property_image in property.propertyimage_set.all %}
-                 <img class="detail-property-img" src="{{ property_image.image }}"/>
-            {% endfor %}
-        </div>
-    </div>
+</div>{% endcomment %}
 
 
 
 
 
 
+
+<div class="seller">
     <div class="card">
-      <div class="seller-card">
-        <img class="detail-seller-img" src="{{ property.seller.image }}"></a>
-        <div class="card-body">
-          <h4 class="card-title">{{ property.seller }}</h4>
+        <div class="seller-card">
+            <img class="detail-seller-img" src="{{ property.seller.image }}"></a>
+            <div class="card-body">
+              <h4 class="card-title">{{ property.seller }}</h4>
+            </div>
         </div>
-      </div>
     </div>
-<<<<<<< HEAD
-    <p>{{ property.description }}</p>
+</div>
+
     {% if user.is_authenticated %}
-=======
 
     <!--
     GOOGLE MAP FER HÉR UNDIR kv. Zakki
@@ -157,16 +186,17 @@
     </body>
     </html>
 
->>>>>>> 692835ddfd0a8f1d01bae99dd5876564c0de1dd8
-    <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
-    <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
+    <button href="{% url 'delete_property' property.id %}" class="button_deleting" id="deleting">Delete property</button>
+    <button href="{% url 'update_property' property.id %}" class="button_update" id="updating">Update property</button>
     {% else %}
-    <a href="{% url 'buy_property' property.id %}" class="block btn btn-primary">Buy property</a>
+    <button href="{% url 'buy_property' property.id %}" class="buy_property">Buy property</button>
     <form>
-        <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"
+        <input type="button" value="Back" class="button_back" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>
     </form>
     {% endif %}
+
+    </div>
 
 
 
