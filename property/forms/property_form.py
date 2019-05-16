@@ -12,11 +12,10 @@ class PropertyUpdateForm(ModelForm):
             'streetname': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'type': widgets.Select(attrs={'class': 'form-control'}),
-            'addr'
-            'ess': widgets.TextInput(attrs={'class': 'form-control'}),
+            'address': widgets.TextInput(attrs={'class': 'form-control'}),
             'postal_code': widgets.TextInput(attrs={'class': 'form-control'}),
             'city': widgets.TextInput(attrs={'class': 'form-control'}),
-            'country': widgets.TextInput(attrs={'class': 'form-control'}),
+            'country': widgets.Select(attrs={'class': 'form-control'}),
             'bedrooms': widgets.NumberInput(attrs={'class': 'form-control'}),
             'bathrooms': widgets.NumberInput(attrs={'class': 'form-control'}),
             'size': widgets.NumberInput(attrs={'class': 'form-control'}),
@@ -38,13 +37,12 @@ class PropertyCreateForm(ModelForm):
             'address': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
             'postal_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Postal code'}),
             'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
-            'country': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Country'}),
+            'country': widgets.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Country'}),
             'bedrooms': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder':'How many bedrooms are in the property?'}),
             'bathrooms': widgets.NumberInput(attrs={'class': 'form-control','placeholder':'How many bathrooms are in the property?'}),
             'size': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder':'How big is the property in sqm?'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Price'}),
         }
-
 
 
 class CreditCardForm(ModelForm):
@@ -53,9 +51,10 @@ class CreditCardForm(ModelForm):
         exclude = ['id']
         widgets = {
             'credit_card': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Credit Card Number.'}),
-            'exp_date': widgets.DateInput(attrs={'class': 'form-control'}),
+            'exp_date': widgets.SelectDateWidget(attrs={'class': 'form-control'}),
             'csv': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'3 digit number on back of card.'}),
         }
+
 
 class BuyerForm(ModelForm):
     class Meta:
@@ -65,7 +64,7 @@ class BuyerForm(ModelForm):
             'buyer_name': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your full name.'}),
             'address': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current streetname.'}),
             'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current city.'}),
-            'country': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current country of living.'}),
+            'country': widgets.Select(attrs={'class': 'form-control', 'placeholder':'Type in your current country of living.'}),
             'postal_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your current postal code.'}),
             'ssc': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your social security number.'}),
             'email': widgets.TextInput(attrs={'class': 'form-control', 'placeholder':'Type in your email.'}),

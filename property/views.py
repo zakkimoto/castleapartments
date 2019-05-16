@@ -4,7 +4,6 @@ from django.contrib.postgres.search import SearchVector
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
 
@@ -31,18 +30,13 @@ def _search_properties(search_term):
 
 
 def filter(request):
-    print('in filter')
     if request.method == 'GET':
-
-        print('in filter GET')
         bedrooms = request.GET.get('bedrooms', '')
         city = request.GET.get('city', '')
         postal_code = request.GET.get('postal_code', '')
 
-        print('in filter GET after parameters')
-        print('bedrooms = ', bedrooms)
-        print('city = ', city)
-        print('postal_code = ', postal_code)
+        #price = request.GET.get('price', '')
+        #streetname = request.GET.get('streetname', '')
 
         query = Q(on_sale=True)
         if postal_code:
@@ -51,6 +45,13 @@ def filter(request):
             query &= Q(bedrooms=bedrooms)
         if city:
             query &= Q(city=city)
+
+        #if price:
+        #    query &= Q(price=price)
+        #    Property.objects.filter(on_sale=True).order_by('Price')
+        #if streetname:
+        #    query &= Q(streetname=streetname)
+        #    Property.objects.filter(on_sale=True).order_by('Streetname')
 
         properties = Property.objects.filter(query)
 
@@ -100,7 +101,6 @@ def get_property_by_id(request, id):
 
 
 @login_required
-# @login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
@@ -115,7 +115,6 @@ def create_property(request):
             property_image4 = PropertyImage(image=request.POST['image4'], property=property)
             property_image4.save()
             return redirect('created_successful')
-            return redirect('property-index')
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {
@@ -128,8 +127,6 @@ def created_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/created_successful.html', dict())
-
-
 
 
 @login_required
@@ -256,4 +253,6 @@ def payment_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/payment_successful.html', dict())
+
+
 

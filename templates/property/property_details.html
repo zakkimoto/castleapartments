@@ -121,14 +121,16 @@
 
     </body>
     </html>
-
+    {% if user.is_authenticated %}
     <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
     <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
+    {% else %}
     <a href="{% url 'buy_property' property.id %}" class="block btn btn-primary">Buy property</a>
     <form>
         <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>
     </form>
+    {% endif %}
 
 
 
