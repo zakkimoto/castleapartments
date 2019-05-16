@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<<<<<<< HEAD
 
 
  <div class="head-photo">
@@ -88,7 +89,32 @@
     </div>
 </div>
 
-    {% if user.is_authenticated %}
+
+    <h1>{{ property.streetname }}</h1>
+    <p id="address">{{ property.address }}</p>
+    <p id="zip">{{ property.postal_code }}</p>
+    <div class="description-container">
+        {% if property.on_sale == True %}
+            <p style="color:green;">ON SALE</p>
+        {% else %}
+            <p style="color:red;">SOLD</p>
+        {% endif %}
+        <p id="city">{{ property.city }}</p>
+        <p id="country">{{ property.country }}</p>
+        <p>{{ property.bedrooms }}</p>
+        <p>{{ property.bathrooms }}</p>
+        <p>{{ property.size }}</p>
+        <p>{{ property.price }}kr.</p>
+        <p>Type of property: {{ property.propertytype.name }}</p>
+        <p>Seller: {{ property.seller.first_name }} {{ property.seller.last_name }}</p>
+    </div>
+    <div class="property-imgs">
+        {% for property_image in property.propertyimage_set.all %}
+            <img src="{{ property_image.image }}" class="property-img"/>
+        {% endfor %}
+    </div>
+    <p>{{ property.description }}</p>
+
 
     <!--
     GOOGLE MAP FER HÉR UNDIR kv. Zakki
@@ -146,7 +172,7 @@
                         {% else %}
                             '<p style="color:red;">SOLD</p>'+
                         {% endif %}
-                        ''+
+                        '{{ property.description }}'+
                         '</p>' +
                         '<div class="property-imgs">\n' +
                         '        {% for property_image in property.propertyimage_set.all %}\n'+
@@ -171,6 +197,7 @@
 
 
         function initMap() {
+            console.log("Zakki er hér")
             let address = $("#address").html()
             let country = $("#country").html()
             let city = $("#city").html()
@@ -185,9 +212,15 @@
 
     </body>
     </html>
+<<<<<<< HEAD
 
     <button href="{% url 'delete_property' property.id %}" class="button_deleting" id="deleting">Delete property</button>
     <button href="{% url 'update_property' property.id %}" class="button_update" id="updating">Update property</button>
+=======
+    {% if user.is_authenticated %}
+    <a href="{% url 'delete_property' property.id %}" class="block btn btn-primary" id="deleting">Delete property</a>
+    <a href="{% url 'update_property' property.id %}" class="block btn btn-primary" id="updating">Update property</a>
+>>>>>>> e00f6158ab0f4dba1d22f099d5211d4316697225
     {% else %}
     <button href="{% url 'buy_property' property.id %}" class="buy_property">Buy property</button>
     <form>

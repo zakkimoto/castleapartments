@@ -2,8 +2,8 @@
     <a href="/sellers/{{ seller.id }}">
         <div id="row_seller">
             <div id="col_seller">
-        <img class="seller-img" src="{{ seller.image }}"/>
-        <h4>{{ seller.first_name}} {{seller.last_name }}</h4>
+        <img class="seller-img" src="{{ seller.user__userimage__image }}"/>
+        <h4>{{ seller.user__first_name}} {{seller.user__last_name }}</h4>
             </div>
         </div>
     </a>

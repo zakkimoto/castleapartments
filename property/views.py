@@ -4,7 +4,6 @@ from django.contrib.postgres.search import SearchVector
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
 
@@ -34,10 +33,7 @@ def _search_properties(search_term):
 
 
 def filter(request):
-    print('in filter')
     if request.method == 'GET':
-
-        print('in filter GET')
         bedrooms = request.GET.get('bedrooms', '')
         bathrooms = request.GET.get('bathrooms', '')
         size = request.GET.get('size', '')
@@ -47,6 +43,7 @@ def filter(request):
         price = request.GET.get('price', '')
         order = request.GET.get('order')
 
+
         print('in filter GET after parameters')
         print('bedrooms = ', bedrooms)
         print('city = ', city)
@@ -54,6 +51,10 @@ def filter(request):
         print('property_type = ', property_type)
         print('price = ', price)
         print('order = ', order)
+
+        #price = request.GET.get('price', '')
+        #streetname = request.GET.get('streetname', '')
+
 
         query = Q(on_sale=True)
         if postal_code:
@@ -71,12 +72,16 @@ def filter(request):
         if price:
             query &= Q(price=price)
 
-        print('query = ', query)
+        #if price:
+        #    query &= Q(price=price)
+        #    Property.objects.filter(on_sale=True).order_by('Price')
+        #if streetname:
+        #    query &= Q(streetname=streetname)
+        #    Property.objects.filter(on_sale=True).order_by('Streetname')
 
         properties = Property.objects.filter(query)
 
         context = {'properties': properties}
-        print('in filter GET after QUERY')
         return render(request, 'property/index.html', context)
     else:
         return HttpResponseNotAllowed()
@@ -106,6 +111,7 @@ def search(request):
         return HttpResponseNotAllowed()
 
 
+
 def index(request):
     if request.method == 'GET':
         if 'search' in request.GET:
@@ -128,14 +134,11 @@ def get_property_by_id(request, id):
 
 
 @login_required
-# @login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
             property = form.save()
-            property.on_sale = True
-            property.save()
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
@@ -147,11 +150,13 @@ def create_property(request):
 
             return redirect('created_successful')
 
+
             return redirect('property-index')
 
 
             return redirect('created_successful')
             return redirect('property-index')
+
 
     else:
         form = PropertyCreateForm()
@@ -165,8 +170,6 @@ def created_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/created_successful.html', dict())
-
-
 
 
 @login_required
@@ -293,4 +296,6 @@ def payment_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/payment_successful.html', dict())
+
+
 

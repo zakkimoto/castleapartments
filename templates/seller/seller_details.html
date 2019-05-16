@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ seller.first_name }}</h1>
-    <img src="{{ seller.image }}"class="seller-img"/>
-    <p>{{ seller.first_name }} {{ seller.last_name }}</p>
-    <p>Email:<a href="mailto:{{ seller.email }}?subject=Castle Apartments">{{ seller.email }}</a></p>
+    <h1>{{ seller.user.first_name }}</h1>
+    <img class="seller-img" src="{{ seller.user.userimage_set.first.image }}"/>
+    <p>{{ seller.user.first_name }} {{ seller.user.last_name }}</p>
+    <p>Email:<a href="mailto:{{ seller.user.email }}?subject=Castle Apartments">{{ seller.user.email }}</a></p>
+    <form>
+    <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0" onClick="javascript:history.go(-1)"/>
+    </form>
     <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary">Edit Profile</a>
 {% endblock %}
