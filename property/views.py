@@ -7,8 +7,6 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
 
-from bs4 import BeautifulSoup as soup
-
 
 # def index(request):
 #    if 'search_filter' in request.GET:
