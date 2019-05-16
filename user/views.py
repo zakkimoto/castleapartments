@@ -1,14 +1,22 @@
-from django.contrib.auth.forms import UserCreationForm
+
 from django.shortcuts import render, redirect
+from user.forms.user_forms import SignUpForm
+from user.models import UserImage
 
 
-# Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = SignUpForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            user_image = UserImage(image=request.POST['image'])
+            user_image.user_id = user.id
+            user_image.save()
             return redirect('login')
+    else:
+        form = SignUpForm()
+
     return render(request, 'user/register.html', {
-        'form': UserCreationForm()
+        'form': form
     })
+
