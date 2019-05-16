@@ -1,10 +1,12 @@
 <div class="well seller" id="container_seller">
-    <a href="/sellers/{{ seller.id }}">
-        <div id="row_seller">
-            <div id="col_seller">
-        <img class="seller-img" src="{{ seller.user__userimage__image }}"/>
-        <h4>{{ seller.user__first_name}} {{seller.user__last_name }}</h4>
+    <div class="single">
+        <a href="/sellers/{{ seller.id }}">
+            <div id="row_seller">
+                <div id="col_seller">
+                    <img class="seller-img" src="{{ seller.user__userimage__image }}"/>
+                    <h4 class="caption">{{ seller.user__first_name}} {{seller.user__last_name }}</h4>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
 </div>
