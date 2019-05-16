@@ -7,6 +7,11 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
+from buyer.models import BuyerSession
+
+
+
+
 
 
 
@@ -25,7 +30,10 @@ from property.models import Property, PropertyImage
 #    context = {'properties': Property.objects.all().order_by('streetname')}
 #    return render(request, 'property/index.html', context)
 
-def _search_properties(search_term):
+def _search_properties(search_term,session):
+    print(search_term)
+    print(session)
+    BuyerSession(session=session, search_term=search_term).save()
     return Property.objects.annotate(
         search=SearchVector('streetname', 'description', 'address', 'country')
     ).all().filter(search=search_term, on_sale=True).order_by('streetname')
@@ -65,6 +73,7 @@ def search(request):
     if request.method == 'GET':
         if 'search_filter' in request.GET:
             search_filter = request.GET['search_filter']
+            print(search_filter + "search filter")
             properties = [{
                 'id': x.id,
                 'streetname': x.streetname,
@@ -83,9 +92,15 @@ def index(request):
     if request.method == 'GET':
         if 'search' in request.GET:
             search_term = request.GET['search']
+            print(search_term)
             print('here')
-            properties = _search_properties(search_term)
+            print(request.session.session_key)
+            print(request)
+            session = request.session.session_key
+            properties = _search_properties(search_term,session)
         else:
+            print("hér")
+            print(request)
             properties = Property.objects.filter(on_sale=True).order_by('streetname')
 
         context = {'properties': properties}

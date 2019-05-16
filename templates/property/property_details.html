@@ -9,7 +9,7 @@
         {% else %}
             <p style="color:red;">SOLD</p>
         {% endif %}
-        <p id="city">{{ p roperty.city }}</p>
+        <p id="city">{{ property.city }}</p>
         <p id="country">{{ property.country }}</p>
         <p>{{ property.bedrooms }}</p>
         <p>{{ property.bathrooms }}</p>
@@ -118,7 +118,6 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXcg5h7Xmgq6UjFkCC1JgIWUKs_iqfNU4&callback=initMap">
     </script>
-
     </body>
     </html>
 
@@ -129,7 +128,5 @@
         <input type="button" value="Back" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"
                onClick="javascript:history.go(-1)"/>
     </form>
-
-
 
 {% endblock %}

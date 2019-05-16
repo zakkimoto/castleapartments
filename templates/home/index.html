@@ -1,29 +1,33 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
     <div id="home-body">
-    <div class="homepage-container">
-        <h3 id="home-title">Castle Apartments
-            <img src=""/>
-        </h3>
-        <div>
-        <form method="get" action="{% url 'property-index' %}">
-            <div class="search-container">
-                <input type="text" name="search" class="search-box" placeholder="Type to search"/>
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
+        <div class="homepage-container">
+            <h3 id="home-title">Castle Apartments
+                <img src=""/>
+            </h3>
+            <div>
+                <form method="get" action="{% url 'property-index' %}">
+                    <div class="search-container">
+                        <input type="text" name="search" class="search-box" placeholder="Type to search"/>
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
         </div>
-    </div>
-    </body>
+
+        </body>
 
 
     </div>
     </html>
 
-
+    {% for search in searches %}
+        <form class="strd" method="get" action="{% url 'property-index' %}">
+            <button name="search" onclick="strd" type="submit" value="{{ search }}">{{ search }}</button>
+        </form>
+    {% endfor %}
 
 {% endblock %}
