@@ -16,7 +16,17 @@
                     </div>
                 </form>
             </div>
+            <div id="#dialog-window">
+                <div class="history-ser" style="overflow: auto; width:300px; height:200px;">
+                    {% for search in searches %}
+                            <form class="strd" method="get" action="{% url 'property-index' %}">
+                                <button class="history-button" name="search" style="width: 100%" onclick="strd" type="submit" value="{{ search }}">{{ search }}</button>
+                            </form>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+
 
         </body>
 
@@ -24,10 +34,5 @@
     </div>
     </html>
 
-    {% for search in searches %}
-        <form class="strd" method="get" action="{% url 'property-index' %}">
-            <button name="search" onclick="strd" type="submit" value="{{ search }}">{{ search }}</button>
-        </form>
-    {% endfor %}
 
 {% endblock %}
