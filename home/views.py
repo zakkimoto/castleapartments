@@ -21,7 +21,7 @@ def index(request):
         } for x in Property.objects.filter(streetname__contains=search_filter)]
         return JsonResponse({'data': properties})
 
-    searches = BuyerSession.objects.filter(session=request.session.session_key)
+    searches = BuyerSession.objects.all().order_by('-id')[:10]
     context = {'properties': Property.objects.all().order_by('streetname'),
                "searches": searches}
     return render(request, 'home/index.html', context)

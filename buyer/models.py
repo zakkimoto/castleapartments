@@ -263,7 +263,7 @@ class Buyer(models.Model):
         return self.buyer_name
 
 class BuyerSession(models.Model):
-    session = models.CharField(max_length=200)
+    #session = models.CharField(max_length=200)
     search_term = models.CharField(max_length=200)
     #buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
 

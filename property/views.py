@@ -31,10 +31,10 @@ from buyer.models import BuyerSession
 #    context = {'properties': Property.objects.all().order_by('streetname')}
 #    return render(request, 'property/index.html', context)
 
-def _search_properties(search_term,session):
+def _search_properties(search_term):
     print(search_term)
-    print(session)
-    BuyerSession(session=session, search_term=search_term).save()
+
+    BuyerSession( search_term=search_term).save()
     return Property.objects.annotate(
         search=SearchVector('streetname', 'description', 'address', 'country', 'price')
     ).all().filter(search=search_term, on_sale=True).order_by('streetname')
@@ -53,17 +53,6 @@ def filter(request):
         order = request.GET.get('order')
 
 
-        print('in filter GET after parameters')
-        print('bedrooms = ', bedrooms)
-        print('city = ', city)
-        print('postal_code = ', postal_code)
-        print('property_type = ', property_type)
-        print('price = ', price)
-        print('order = ', order)
-
-        #price = request.GET.get('price', '')
-        #streetname = request.GET.get('streetname', '')
-
 
         query = Q(on_sale=True)
         if postal_code:
@@ -81,14 +70,9 @@ def filter(request):
         if price:
             query &= Q(price=price)
 
-        #if price:
-        #    query &= Q(price=price)
-        #    Property.objects.filter(on_sale=True).order_by('Price')
-        #if streetname:
-        #    query &= Q(streetname=streetname)
-        #    Property.objects.filter(on_sale=True).order_by('Streetname')
 
-        properties = Property.objects.filter(query)
+
+        properties = Property.objects.filter(query).order_by(order)
 
         context = {'properties': properties}
         return render(request, 'property/index.html', context)
@@ -128,10 +112,10 @@ def index(request):
             search_term = request.GET['search']
             print(search_term)
             print('here')
-            print(request.session.session_key)
+
             print(request)
-            session = request.session.session_key
-            properties = _search_properties(search_term,session)
+
+            properties = _search_properties(search_term)
         else:
             print("hér")
             print(request)
