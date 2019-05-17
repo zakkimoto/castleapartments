@@ -109,12 +109,16 @@ def index(request):
 
 def get_property_by_id(request, id):
     res = Seller.objects.filter(user_id=request.user.id).values_list('pk', flat=True)
-    seller_id=res.values()[0]['id']
-
-    return render(request, 'property/property_details.html', {
-        'property': get_object_or_404(Property, pk=id),
-        'prufa': seller_id
-    })
+    if request.user.is_authenticated:
+        seller_id=res.values()[0]['id']
+        return render(request, 'property/property_details.html', {
+            'property': get_object_or_404(Property, pk=id),
+            'prufa': seller_id
+        })
+    else:
+        return render(request, 'property/property_details.html', {
+            'property': get_object_or_404(Property, pk=id),
+        })
 
 
 @login_required

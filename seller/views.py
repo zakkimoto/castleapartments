@@ -12,9 +12,17 @@ def index(request):
 
 
 def get_seller_by_id(request, id):
-    return render(request, 'seller/seller_details.html', {
-        'seller': get_object_or_404(Seller, pk=id)
-    })
+    res = Seller.objects.filter(user_id=request.user.id).values_list('pk', flat=True)
+    if request.user.is_authenticated:
+        seller_id=res.values()[0]['id']
+        return render(request, 'seller/seller_details.html', {
+            'seller': get_object_or_404(Seller, pk=id),
+            'prufa': seller_id
+        })
+    else:
+        return render(request, 'seller/seller_details.html', {
+            'seller': get_object_or_404(Seller, pk=id)
+        })
 
 
 def update_seller(request, id):

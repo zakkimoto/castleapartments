@@ -8,7 +8,11 @@
     <div id="seller-info-div">
         <a href="mailto:{{ seller.user.email }}?subject=Castle Apartments" id="email" title="{{ seller.user.email }}">Send email</a>
         <br>
-        <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary" id="edit-profile-btn">Edit Profile</a>
+        {% if user.is_authenticated  %}
+            {% if seller.id == prufa %}
+                <a href="{% url 'update_seller' seller.id %}" class="block btn btn-primary" id="edit-profile-btn">Edit Profile</a>
+            {% endif %}
+        {% endif %}
     </div>
     </div>
     <form>
