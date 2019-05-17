@@ -1,47 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="review-body">
+    <div class="review-step">
+        <h3 class="text-l">Review Step</h3>
+        <h5 class="text-r">Property bought</h5>
+        <h6 class="text-r">{{ property.address }}</h6>
 
-<h3>Review Step</h3>
-    <h1>Property bought</h1>
-    <h2>{{ property.address }}</h2>
+        <h3 class="text-l">Contact information</h3>
+        <h6 class="text-r">{{ property.buyer.buyer_name }}</h6>
+        <h6 class="text-r">{{ property.buyer.address }}</h6>
+        <h6 class="text-r">{{ property.buyer.city }}</h6>
+        <h6 class="text-r">{{ property.buyer.country }}</h6>
+        <h6 class="text-r">{{ property.buyer.postal_code }}</h6>
+        <h6 class="text-r">{{ property.buyer.ssc }}</h6>
+        <h6 class="text-r">{{ property.buyer.email }}</h6>
 
-    <h1>Contact information</h1>
-    <h2>{{ property.buyer.buyer_name }}</h2>
-    <h2>{{ property.buyer.address }}</h2>
-    <h2>{{ property.buyer.city }}</h2>
-    <h2>{{ property.buyer.country }}</h2>
-    <h2>{{ property.buyer.postal_code }}</h2>
-    <h2>{{ property.buyer.ssc }}</h2>
-    <h2>{{ property.buyer.email }}</h2>
-
-    <h1>Payment information</h1>
-    <h2>{{ property.buyer.credit_card }}</h2>
-    <h2>{{ property.buyer.exp_date }}</h2>
-    <h2>{{ property.buyer.cvc }}</h2>
+        <h3 class="text-l">Payment information</h3>
+        <h6 class="text-r">{{ property.buyer.credit_card.credit_card }}</h6>
+        <h6 class="text-r">{{ property.buyer.credit_card.exp_date }}</h6>
+        <h6 class="text-r">{{ property.buyer.credit_card.cvc }}</h6>
+    </div>
 
 
-    <form id="confirm-frm" method="post">
-        {% csrf_token %}
-        <a href="{% url 'payment_property' id %}">Back</a>
-        <input id="cancel-btn" type="submit" value="Cancel" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
-        <input id="confirm-btn" type="submit" value="Confirm" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
-    </form>
 
-    <script>
-        $(document).ready(function() {
-            $('#cancel-btn').click(function () {
-                console.log('cancel clicked')
-                $('#confirm-frm')
-                    .attr('action', "{% url 'payment_review' id False %}")
-            })
-            $('#confirm-btn').click(function () {
-                console.log('confirm clicked')
-                $('#confirm-frm')
-                    .attr('action', "{% url 'payment_review' id True %}")
-            })
+        <form id="confirm-frm" method="post">
+            {% csrf_token %}
+            <div class="text-center">
+                <a href="{% url 'payment_property' id %}" class="btn btn-primary pull-right">Back</a>
+                <input id="cancel-btn" type="submit" value="Cancel" class="btn btn-primary pull-right" />
+                <input id="confirm-btn" type="submit" value="Confirm" class="btn btn-primary pull-right" />
+            </div>
 
-        });
-    </script>
+        </form>
+
+        <script>
+            $(document).ready(function() {
+                $('#cancel-btn').click(function () {
+                    console.log('cancel clicked')
+                    $('#confirm-frm')
+                        .attr('action', "{% url 'payment_review' id False %}")
+                })
+                $('#confirm-btn').click(function () {
+                    console.log('confirm clicked')
+                    $('#confirm-frm')
+                        .attr('action', "{% url 'payment_review' id True %}")
+                })
+
+            });
+        </script>
+</div>
+
 {% endblock %}
-

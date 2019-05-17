@@ -656,3 +656,162 @@ input::-webkit-input-placeholder {
     font-size: 20px;
     text-decoration: underline;
 }
+
+
+
+/*update seller START */
+
+#update-seller-button{
+    clear:both;
+    margin: 10px 0;
+    margin-bottom: 1px;
+}
+
+.update_seller{
+    margin-left: 5%;
+}
+
+#input-update-box{
+    width: 300px;
+    margin: auto;
+    padding-top: 30px
+;
+}
+
+select #id_user{
+    padding-right: 100px
+}
+
+#id_user{
+    margin-left:0%;
+    margin-right: 150%;
+    margin-bottom: 2%;
+}
+
+/*update seller END */
+
+#serch-box-style{
+    width: 70%;
+    margin-left: 5%;
+}
+
+
+#back-seller {
+    clear: both;
+    margin: 10px 0;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+
+#title{
+    margin-left: 5%;
+    margin-bottom: 1%;
+    color: darkgray;
+}
+
+
+/*Property filters in order & search START */
+#search-box-prop {
+    margin: auto;
+    width: 90%;
+}
+
+#search-btn-prop {
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    text-align: center;
+    margin-left: 5%;
+}
+
+.property-filters {
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+#search-btn-filter, #order-by {
+    border: none;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+#order-by {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#order-btn {
+    margin-right: 5px;
+}
+
+#drop-style {
+    color: black;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+#filer-fill {
+    color: black;
+    margin-left: 15px;
+}
+
+.bedroom-drop {
+    align-items: center;
+}
+
+.order-by-div {
+    margin-left: 15px;
+}
+/*Property filters in order & search END */
+
+
+/* Buying process START*/
+.text-center{
+    clear:both;
+    margin: 10px 0
+}
+
+#buy-property-form, #payment-property-form{
+    width: 300px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.property-success{
+    height: 700px
+}
+
+.review-step{
+    text-align: center;
+    padding-top: 40px;
+
+}
+
+#buy-property-form label, #payment-property-form label{
+    position: center;
+    margin: auto;
+    padding: 9px;
+}
+
+#payment-property-form select{
+    margin-bottom: 12px
+}
+
+.review-body{
+    height: 700px
+}
+
+.congrats {
+    padding-top: 250px;
+    padding-bottom: 250px;
+    margin-left: 250px;
+}
+
+#hello {
+    width: 600px;
+    margin-left: 4px;
+}

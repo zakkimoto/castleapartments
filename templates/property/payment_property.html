@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <form class="form form-horizontal" action="{% url 'payment_property' id %}" method="post">
+    <form class="form form-horizontal" action="{% url 'payment_property' id %}" method="post" id="payment-property-form">
         {% csrf_token %}
         {{ form }}
-        <a href="{% url 'buy_property' id %}">Back</a>
+        <br>
+        <div class="text-center">
+        <a href="{% url 'buy_property' id %}" class="btn btn-primary pull-right">Back</a>
         <input type="submit" value="Next" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
+        </div>
     </form>
 {% endblock %}

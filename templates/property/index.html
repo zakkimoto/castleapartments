@@ -2,16 +2,18 @@
 
 {% block content %}
 
-    <h3 id="title">Properties</h3>
+
     <form method="get" action="{% url 'property-index' %}">
+        <div id="hello">
         <input type="text" name="search" class="form-control" placeholder="Type to search"/>
-        <button type="submit" id="search-btn-prop" class="btn btn-default">Search</button>
+        <button type="submit" id="search-btn-prop" class="btn btn-primary pull-right">Search</button>
+        </div>
     </form>
 
 
 
     <form method="get" action="{% url 'filter' %}" class="property-filters">
-        <select type="dropdown-menu" name="Bedrooms" id="drop-style" class="bedroom-drop">
+        <select type="dropdown-menu" name="bedrooms" id="drop-style" class="bedroom-drop">
             <option class="dropdown-item" disabled selected>Bedrooms</option>
             <option class="dropdown-item" href="#">0</option>
             <option class="dropdown-item" href="#">1</option>
@@ -24,7 +26,7 @@
             <option class="dropdown-item" href="#">8</option>
             <option class="dropdown-item" href="#">9</option>
         </select>
-        <select type="dropdown-menu" name="Bathrooms" id="drop-style">
+        <select type="dropdown-menu" name="bathrooms" id="drop-style">
             <option class="dropdown-item" disabled selected>Bathrooms</option>
             <option class="dropdown-item" href="#">0</option>
             <option class="dropdown-item" href="#">1</option>
@@ -37,7 +39,7 @@
             <option class="dropdown-item" href="#">8</option>
             <option class="dropdown-item" href="#">9</option>
         </select>
-        <select type="dropdown-menu" name="Property-Type" id="drop-style">
+        <select type="dropdown-menu" name="property-type" id="drop-style">
             <option class="dropdown-item" disabled selected>Property Type</option>
             <option class="dropdown-item" href="#">Villa</option>
             <option class="dropdown-item" href="#">Apartment</option>
@@ -51,12 +53,12 @@
         <input type="text" name="city" placeholder="City" id="filter-fill"/>
         <input type="text" name="postal_code" placeholder="Postal Code" id="filter-fill"/>
         <input type="text" name="size" placeholder="Size" id="filter-fill"/>
-        <button type="submit" id="search-btn-filter" class="btn btn-default">
+        <button type="submit" id="search-btn-filter" class="btn btn-primary pull-right">
             Filter
         </button>
 
         <div class="order-by-div">Order by:<select type="dropdown-menu" name="order" id="order-by">
-            <option class="dropdown-item">streetame</option>
+            <option class="dropdown-item">streetname</option>
             <option class="dropdown-item">price</option>
         </select>
         </div>

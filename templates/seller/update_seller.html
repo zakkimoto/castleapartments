@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="update_seller">
-    <form class="form form-horizontal" action="{% url 'update_seller' id %}" method="post">
+    <form class="form form-horizontal" action="{% url 'update_seller' id %}" method="post" id="input-update-box">
         {% csrf_token %}
         {{ form }}
+        <input type="button" value="Back" class="btn btn-primary pull-right" id="back-seller" onClick="javascript:history.go(-1)"/>
         <input type="submit" value="Update" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0"/>
     </form>
+
     </div>
 {% endblock %}
