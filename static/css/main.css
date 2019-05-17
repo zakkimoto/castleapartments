@@ -620,3 +620,8 @@ input::-webkit-input-placeholder {
      font-size: 20px;
      text-decoration: underline;
  }
+
+
+#index-content{
+    padding-top: 20px;
+}

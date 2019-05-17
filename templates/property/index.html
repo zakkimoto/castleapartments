@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h3 id="title">Properties</h3>
+    <div id="index-content">
     <span class="input-group" id="search-box-prop">
         <input type="text" class="form-control" id="search-box" placeholder="Enter your search here..."/>
         <button type="button" id="search-btn-prop" class="btn btn-default">Search</button>
@@ -67,6 +67,7 @@
         {% for property in properties %}
             {% include 'property/single_property.html' with property=property %}
         {% endfor %}
+    </div>
     </div>
 {% endblock %}
 

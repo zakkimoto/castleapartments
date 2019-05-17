@@ -13,12 +13,6 @@ from buyer.models import BuyerSession
 
 
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 7833714170236b00345c28e935a012702a60606e
-
 # def index(request):
 #    if 'search_filter' in request.GET:
 #        search_filter = request.GET['search_filter']

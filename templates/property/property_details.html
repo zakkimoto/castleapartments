@@ -53,7 +53,7 @@
 <div class="seller">
     <div class="card">
         <div class="seller-card">
-            <img class="detail-seller-img" src="{{ property.seller.image }}"></a>
+            <img class="detail-seller-img" src="{{ property.seller.user.userimage_set.first.image }}"></a>
             <div class="card-body">
               <h4 class="card-title">{{ property.seller }}</h4>
             </div>
