@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -138,3 +139,4 @@ STATICFILES_DIRS = [
 LOGIN_URL = 'user/login'
 # If I'm successfully logged in
 LOGIN_REDIRECT_URL = '/user/profile'
+

@@ -4,9 +4,16 @@ from django.contrib.postgres.search import SearchVector
 from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 
-
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
+from buyer.models import BuyerSession
+
+
+
+
+
+
+
 
 
 # def index(request):
@@ -24,25 +31,39 @@ from property.models import Property, PropertyImage
 #    context = {'properties': Property.objects.all().order_by('streetname')}
 #    return render(request, 'property/index.html', context)
 
-def _search_properties(search_term):
+def _search_properties(search_term,session):
+    print(search_term)
+    print(session)
+    BuyerSession(session=session, search_term=search_term).save()
     return Property.objects.annotate(
-        search=SearchVector('streetname', 'description', 'address', 'country')
+        search=SearchVector('streetname', 'description', 'address', 'country', 'price')
     ).all().filter(search=search_term, on_sale=True).order_by('streetname')
 
 
-def filter(request):
-    print('in filter')
-    if request.method == 'GET':
 
-        print('in filter GET')
+def filter(request):
+    if request.method == 'GET':
         bedrooms = request.GET.get('bedrooms', '')
+        bathrooms = request.GET.get('bathrooms', '')
+        size = request.GET.get('size', '')
         city = request.GET.get('city', '')
         postal_code = request.GET.get('postal_code', '')
+        property_type = request.GET.get('property_type', '')
+        price = request.GET.get('price', '')
+        order = request.GET.get('order')
+
 
         print('in filter GET after parameters')
         print('bedrooms = ', bedrooms)
         print('city = ', city)
         print('postal_code = ', postal_code)
+        print('property_type = ', property_type)
+        print('price = ', price)
+        print('order = ', order)
+
+        #price = request.GET.get('price', '')
+        #streetname = request.GET.get('streetname', '')
+
 
         query = Q(on_sale=True)
         if postal_code:
@@ -51,13 +72,25 @@ def filter(request):
             query &= Q(bedrooms=bedrooms)
         if city:
             query &= Q(city=city)
+        if bathrooms:
+            query &= Q(bathrooms=bathrooms)
+        if size:
+            query &= Q(size=size)
+        if property_type:
+            query &= Q(property_type=property_type)
+        if price:
+            query &= Q(price=price)
 
-        print('query = ', query)
+        #if price:
+        #    query &= Q(price=price)
+        #    Property.objects.filter(on_sale=True).order_by('Price')
+        #if streetname:
+        #    query &= Q(streetname=streetname)
+        #    Property.objects.filter(on_sale=True).order_by('Streetname')
 
         properties = Property.objects.filter(query)
 
         context = {'properties': properties}
-        print('in filter GET after QUERY')
         return render(request, 'property/index.html', context)
     else:
         return HttpResponseNotAllowed()
@@ -67,6 +100,7 @@ def search(request):
     if request.method == 'GET':
         if 'search_filter' in request.GET:
             search_filter = request.GET['search_filter']
+            print(search_filter + "search filter")
             properties = [{
                 'id': x.id,
                 'streetname': x.streetname,
@@ -74,19 +108,33 @@ def search(request):
                 'firstImage': x.propertyimage_set.first().image,
                 'country': x.country,
                 'size': x.size,
+                'bathrooms': x.bathrooms,
+                'bedrooms': x.bedrooms,
+                'price': x.price,
+                'city': x.city,
+                'postal_code': x.postal_code,
+                'property_type': x.property_type,
+                'order': x.order
             } for x in _search_properties(search_filter)]
             return JsonResponse({'data': properties})
     else:
         return HttpResponseNotAllowed()
 
 
+
 def index(request):
     if request.method == 'GET':
         if 'search' in request.GET:
             search_term = request.GET['search']
+            print(search_term)
             print('here')
-            properties = _search_properties(search_term)
+            print(request.session.session_key)
+            print(request)
+            session = request.session.session_key
+            properties = _search_properties(search_term,session)
         else:
+            print("hér")
+            print(request)
             properties = Property.objects.filter(on_sale=True).order_by('streetname')
 
         context = {'properties': properties}
@@ -102,14 +150,11 @@ def get_property_by_id(request, id):
 
 
 @login_required
-# @login_required
 def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
             property = form.save()
-            property.on_sale = True
-            property.save()
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
@@ -118,8 +163,17 @@ def create_property(request):
             property_image3.save()
             property_image4 = PropertyImage(image=request.POST['image4'], property=property)
             property_image4.save()
+
+            return redirect('created_successful')
+
+
+            return redirect('property-index')
+
+
             return redirect('created_successful')
             return redirect('property-index')
+
+
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {
@@ -132,8 +186,6 @@ def created_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/created_successful.html', dict())
-
-
 
 
 @login_required
@@ -260,4 +312,6 @@ def payment_successful(request):
 
     if request.method == 'GET':
         return render(request, 'property/payment_successful.html', dict())
+
+
 

@@ -8,8 +8,14 @@
         <button type="button" id="search-btn-prop" class="btn btn-default">Search</button>
     </span>
 
+<<<<<<< HEAD
     <form method="get" action="{% url 'filter' %}" class="property-filters">
             <select type="dropdown-menu" name="bedrooms" id="drop-style" class="bedroom-drop">
+=======
+
+    <form method="get" action="{% url 'filter' %}" class="property-filters">
+            <select type="dropdown-menu" name="Bedrooms" id="drop-style" class="bedroom-drop">
+>>>>>>> b8e5ba81d4b2337dfc852bca659cbfce16e7ce5f
                 <option class="dropdown-item" disabled selected>Bedrooms</option>
                 <option class="dropdown-item" href="#">0</option>
                 <option class="dropdown-item" href="#">1</option>
@@ -35,7 +41,11 @@
                     <option class="dropdown-item" href="#">8</option>
                     <option class="dropdown-item" href="#">9</option>
                 </select>
+<<<<<<< HEAD
             <select type="dropdown-menu" name="Property-Type" id="drop-style">
+=======
+            <select type="dropdown-menu" name="Property-Type"  id="drop-style">
+>>>>>>> b8e5ba81d4b2337dfc852bca659cbfce16e7ce5f
                 <option class="dropdown-item" disabled selected>Property Type</option>
                 <option class="dropdown-item" href="#">Villa</option>
                 <option class="dropdown-item" href="#">Apartment</option>
@@ -44,6 +54,7 @@
                 <option class="dropdown-item" href="#">Land</option>
             </select>
 
+<<<<<<< HEAD
             <input type="text" name="Price" placeholder="Price" id="filer-fill"/>
             <input type="text" name="city" placeholder="City" id="filer-fill"/>
             <input type="text" name="postal_code" placeholder="Postal Code" id="filer-fill"/>
@@ -51,7 +62,23 @@
             <button type="submit" id="search-btn-filter" class="btn btn-default">
                 Filter
             </button>
+=======
 
+            <input type="text" name="price" placeholder="Price" id="filter-fill"/>
+            <input type="text" name="city" placeholder="City" id="filter-fill"/>
+            <input type="text" name="postal_code" placeholder="Postal Code" id="filter-fill"/>
+            <input type="text" name="size" placeholder="Size" id="filter-fill"/>
+        <button type="submit" id="search-btn-filter" class="btn btn-default">
+            Filter
+        </button>
+>>>>>>> b8e5ba81d4b2337dfc852bca659cbfce16e7ce5f
+
+        <div class="order-by-div">Order by:<select type="dropdown-menu" name="Order" id="order-by">
+                <option class="dropdown-item">Name</option>
+                <option class="dropdown-item">Price</option>
+        </select>
+        </div>
+    </form>
 
         <div class="order-by-div">Order by:<select type="dropdown-menu" name="Order" id="order-by">
                 <option class="dropdown-item">Name</option>

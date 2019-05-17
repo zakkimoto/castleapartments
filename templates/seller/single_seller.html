@@ -3,8 +3,13 @@
         <a href="/sellers/{{ seller.id }}">
             <div id="row_seller">
                 <div id="col_seller">
+<<<<<<< HEAD
                     <img class="seller-img" src="{{ seller.image }}"/>
                     <h4 class="caption">{{ seller.first_name}} {{seller.last_name }}</h4>
+=======
+                    <img class="seller-img" src="{{ seller.user__userimage__image }}"/>
+                    <h4 class="caption">{{ seller.user__first_name}} {{seller.user__last_name }}</h4>
+>>>>>>> b8e5ba81d4b2337dfc852bca659cbfce16e7ce5f
                 </div>
             </div>
         </a>
