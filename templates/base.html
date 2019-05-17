@@ -1,4 +1,3 @@
-
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -10,7 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Castle Apartments</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
@@ -24,29 +24,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <div class="navbar-nav mc-auto">
-        <a class="navbar-brand" href="/home">
-            <img id="frontpagelogo" src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60355069_1556879224446662_7025928762332020736_n.png?_nc_cat=101&_nc_ht=scontent-arn2-1.xx&oh=591b71122a137ba6bb8446c343ec328b&oe=5D527D9A"/>
-        </a>
+            <a class="navbar-brand" href="/home">
+                <img id="frontpagelogo"
+                     src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/60355069_1556879224446662_7025928762332020736_n.png?_nc_cat=101&_nc_ht=scontent-arn2-1.xx&oh=591b71122a137ba6bb8446c343ec328b&oe=5D527D9A"/>
+            </a>
         </div>
         <div class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <div class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a></div>
-            <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
-        {% if user.is_authenticated %}
-            <div class="navbar-nav mc-auto mt-2 mt-lg-0">
-                <div class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a></div>
-                <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a><li/>
+            <div class="nav-item"><a class="nav-link" href="{% url 'property-index' %}">Property <span class="sr-only">(current)</span></a>
             </div>
-        {% else %}
-                <div class="navbar-nav ml-auto mt-2 mt-lg-0" id="nav_right">
-                    <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
-                    <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
-                </div>
+            <div class="nav-item"><a class="nav-link" href="{% url 'seller-index' %}">Sellers </a></div>
+            {% if user.is_authenticated %}
+                <div class="navbar-nav mc-auto mt-2 mt-lg-0">
+                    <div class="nav-item"><a class="nav-link" href="{% url 'create_property' %}">Register property</a>
+                    </div>
+                    <div class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <li/>
+                    </div>
+                    {% else %}
+                    <div class="navbar-nav ml-auto mt-2 mt-lg-0" id="nav_right">
+                        <div class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></div>
+                        <div class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></div>
+                    </div>
                 </div>
             {% endif %}
-            </div>
-            </div>
-
         </div>
+    </div>
+
+    </div>
     </div>
 </nav>
 
@@ -56,8 +60,8 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="{% static 'js/properties.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="{% static 'js/properties.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -68,118 +72,126 @@
 <script src="{% static 'js/properties.js' %}"></script>
 
 
-
-
 <!-- Footer -->
 <footer class="page-footer font-small ">
 
-  <div class="footer-banner">
-    <div class="container">
+    <div class="footer-banner">
+        <div class="container">
 
-      <!-- Grid row-->
-      <div class="row py-4 d-flex align-items-center">
+            <!-- Grid row-->
+            <div class="row py-4 d-flex align-items-center">
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Help Yourself!</h6>
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                    <h6 class="mb-0">Help Yourself!</h6>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                    <!-- Facebook -->
+                    <a class="fb-ic">
+                        <i class="fab fa-facebook-f white-text mr-4"> </i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="tw-ic">
+                        <i class="fab fa-twitter white-text mr-4"> </i>
+                    </a>
+                    <!-- Google +-->
+                    <a class="gplus-ic">
+                        <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                    </a>
+                    <!--Linkedin -->
+                    <a class="li-ic">
+                        <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                    </a>
+                    <!--Instagram-->
+                    <a class="ins-ic">
+                        <i class="fab fa-instagram white-text"> </i>
+
+                    </a>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+
         </div>
-        <!-- Grid column -->
+    </div>
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
 
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="fab fa-facebook-f white-text mr-4"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fab fa-twitter white-text mr-4"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic">
-            <i class="fab fa-google-plus-g white-text mr-4"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic">
-            <i class="fab fa-linkedin-in white-text mr-4"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic">
-            <i class="fab fa-instagram white-text"> </i>
+        <!-- Grid row -->
+        <div class="row mt-3">
 
-          </a>
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                <!-- Content -->
+                <h6 class="text-uppercase font-weight-bold">Castle Apartments</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Send us an email.</p>
+
+                <form action="mailto:castleapartments@fastmail.com" method="post" enctype="text/plain">
+                    Name:<br>
+                    <input type="text" name="name"><br>
+                    E-mail:<br>
+                    <input type="text" name="mail"><br>
+                    Comment:<br>
+                    <input type="text" name="comment" size="50"><br><br>
+                    <input type="submit" value="Send">
+                    <input type="reset" value="Reset">
+                </form>
+
+            </div>
+            <!-- Grid column -->
+
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="{% url 'property-index' %}">Your Account</a>
+                </p>
+                <p>
+                    <a href="#!">Rates</a>
+                </p>
+                <p>
+                    <a href="#!">Help</a>
+                </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fas fa-home mr-3"></i> Menntavegur 1, Iceland</p>
+                <p>
+                    <i class="fas fa-envelope mr-3"></i> info@castleapartments.com</p>
+                <p>
+                    <i class="fas fa-phone mr-3"></i> + 354 58 12345</p>
+                <p>
+                    <i class="fas fa-print mr-3"></i> + 354 58 12345</p>
+
+            </div>
+            <!-- Grid column -->
 
         </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row-->
+        <!-- Grid row -->
 
     </div>
-  </div>
-
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
-
-    <!-- Grid row -->
-    <div class="row mt-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-        <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold" >Castle Apartments</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>hæ þetta er Zakki.</p>
-
-      </div>
-      <!-- Grid column -->
-
-
-
-      <!-- Grid column -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a href="{% url 'property-index' %}">Your Account</a>
-        </p>
-        <p>
-          <a href="#!">Rates</a>
-        </p>
-        <p>
-          <a href="#!">Help</a>
-        </p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fas fa-home mr-3"></i> Menntavegur 1, Iceland</p>
-        <p>
-          <i class="fas fa-envelope mr-3"></i> info@castleapartments.com</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 354 58 12345</p>
-        <p>
-          <i class="fas fa-print mr-3"></i> + 354 58 12345</p>
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
+    <!-- Footer Links -->
 
 </footer>
 <!-- Footer -->
