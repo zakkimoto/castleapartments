@@ -37,7 +37,7 @@ class PropertyCreateForm(ModelForm):
             'address': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
             'postal_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Postal code'}),
             'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
-            'country': widgets.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Country'}),
+            'country': widgets.Select(attrs={'class': 'form-control', 'placeholder': 'Country'}),
             'bedrooms': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder':'How many bedrooms are in the property?'}),
             'bathrooms': widgets.NumberInput(attrs={'class': 'form-control','placeholder':'How many bathrooms are in the property?'}),
             'size': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder':'How big is the property in sqm?'}),

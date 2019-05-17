@@ -7,29 +7,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from property.forms.property_form import PropertyCreateForm, PropertyUpdateForm, BuyerForm, CreditCardForm
 from property.models import Property, PropertyImage
 from buyer.models import BuyerSession
+from seller.models import Seller
+from user.models import UserImage
 
-
-
-
-
-
-
-
-
-# def index(request):
-#    if 'search_filter' in request.GET:
-#        search_filter = request.GET['search_filter']
-#        properties = [{
-#            'id': x.id,
-#            'streetname': x.streetname,
-#            'description': x.description,
-#            'firstImage': x.propertyimage_set.first().image,
-#            'country': x.country,
-#            'size': x.size,
-#        } for x in Property.objects.filter(streetname__contains=search_filter)]
-#        return JsonResponse({'data': properties})
-#    context = {'properties': Property.objects.all().order_by('streetname')}
-#    return render(request, 'property/index.html', context)
 
 def _search_properties(search_term):
     print(search_term)
@@ -128,8 +108,12 @@ def index(request):
 
 
 def get_property_by_id(request, id):
+    res = Seller.objects.filter(user_id=request.user.id).values_list('pk', flat=True)
+    seller_id=res.values()[0]['id']
+
     return render(request, 'property/property_details.html', {
-        'property': get_object_or_404(Property, pk=id)
+        'property': get_object_or_404(Property, pk=id),
+        'prufa': seller_id
     })
 
 
@@ -138,7 +122,11 @@ def create_property(request):
     if request.method == 'POST':
         form = PropertyCreateForm(data=request.POST)
         if form.is_valid():
-            property = form.save()
+            property = form.save(commit=False)
+            seller = Seller.objects.filter(user_id=request.user.id).first()
+            property.seller = seller
+            property.save()
+
             property_image = PropertyImage(image=request.POST['image'], property=property)
             property_image.save()
             property_image2 = PropertyImage(image=request.POST['image2'], property=property)
@@ -148,16 +136,10 @@ def create_property(request):
             property_image4 = PropertyImage(image=request.POST['image4'], property=property)
             property_image4.save()
 
-            return redirect('created_successful')
 
-
-            return redirect('property-index')
 
 
             return redirect('created_successful')
-            return redirect('property-index')
-
-
     else:
         form = PropertyCreateForm()
     return render(request, 'property/create_property.html', {
@@ -276,7 +258,6 @@ def payment_review(request, id, confirm):
             property.save()
 
             return redirect(reverse('payment_successful'))
-            print('confirmed')
 
 
         else:
