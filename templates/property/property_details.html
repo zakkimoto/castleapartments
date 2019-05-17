@@ -10,45 +10,36 @@
                     <p class="prop-title">{{ property.city}}, {{property.country}}</p><br>
                     <p class="prop-title">{{ property.description }}</p>
                 </div>
+                <div class="property-extra">
+                    <ul class="dashed">
+                        {% if property.on_sale == True %}
+                            <li style="color:green;">ON SALE</li>
+                        {% else %}
+                            <li style="color:red;">SOLD</li>
+                        {% endif %}
+                        <li id ="address">{{ property.address }}</li>
+                        <li id ="city">{{ property.city }}</li>
+                        <li id ="country">{{ property.country }}</li>
+                        <li>{{ property.postal_code }}</li>
+                        <li>{{ property.bedrooms }} Bedrooms</li>
+                        <li>{{ property.bathrooms }} Bathrooms</li>
+                        <li>{{ property.size }} sqft</li>
+                        <li>{{ property.seller }}</li>
+                    </ul>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 
 
 <div class="nextline">
-    <div class="detail-imgs">
         <div class="property-imgs">
             {% for property_image in property.propertyimage_set.all %}
                  <img class="detail-property-img" src="{{ property_image.image }}"/>
             {% endfor %}
         </div>
     </div>
-</div>
-
-<div class="property-information">
-    <div class="info-title">
-        <h3> {{ property.address }}</h3>
-        <h6>{{ property.city }}, {{ property.country }}</h6>
-        <p>{{ property.description }}</p>
-    </div>
-    <div class="info-list">
-        <ul class="dashed">
-            {% if property.on_sale == True %}
-                <li style="color:green;">ON SALE</li>
-            {% else %}
-                <li style="color:red;">SOLD</li>
-            {% endif %}
-            <li id ="address">{{ property.address }}</li>
-            <li id ="city">{{ property.city }}</li>
-            <li id ="country">{{ property.country }}</li>
-            <li>{{ property.postal_code }}</li>
-            <li>{{ property.bedrooms }} Bedrooms</li>
-            <li>{{ property.bathrooms }} Bathrooms</li>
-            <li>{{ property.size }} sqft</li>
-            <li>{{ property.seller }}</li>
-        </ul>
-    </div>
-</div>
 
 <div class="seller">
     <div class="card">
