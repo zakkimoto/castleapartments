@@ -286,6 +286,10 @@ ul li:before{
     margin: auto;
 }
 
+.seller{
+    position: relative;
+}
+
 .detail-seller-img{
     height: 180px;
     width: 300px;
@@ -303,13 +307,15 @@ ul li:before{
     width: 100%;
     align-content: center;
     padding-bottom: 40px;
+    display: block;
 }
 
 .detail-property-img{
     object-fit: cover;
-    height: auto;
+    height: 140px;
     width: 245px;
-    margin: 20px
+    margin: 20px;
+    position: relative;
 }
 
 .detail-imgs{
@@ -317,6 +323,7 @@ ul li:before{
     padding: 2px;
     height: auto;
     width: auto;
+    display: block;
 }
 
 .property-imgs{
@@ -353,6 +360,7 @@ property-details img{
     position: relative;
     width: auto;
     max-width: 800px;
+    display: block;
 }
 /* Login form */
 
@@ -474,7 +482,7 @@ input::-webkit-input-placeholder {
     color: black;
     text-decoration: none;
     font-size: 20px;
-    margin: 0 15px;
+    margin: 15px 15px;
 }
 /* Media screen */
 @media screen and (max-width: 1500px){
@@ -505,9 +513,13 @@ input::-webkit-input-placeholder {
 
 @media screen and (max-width: 530px) {
   .head-photo img {
-    width: 490px;
+    width: 450px;
     height: 300px;
   }
+}
+
+#map{
+    padding-bottom: 40px
 }
 
 /*propety síða*/
